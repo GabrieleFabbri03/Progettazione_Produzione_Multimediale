@@ -46,11 +46,18 @@
             padding: 20px 0;
         }
 
-        /* Contenitore per centrare il contenuto a 1200px */
-        .container, .nav-container, .header-container {
-            max-width: 1200px;
+        /* 1. Contenitore principale delle notizie (resta compatto al centro) */
+        .container {
+            max-width: 1024px; /* <-- Abbassato da 1200px a 1024px */
             margin: 0 auto;
             padding: 0 15px;
+        }
+
+        /* 2. Contenitori di Navigazione e Header (Senza limiti, attaccati ai bordi!) */
+        .nav-container, .header-container {
+            width: 100%;       /* Prende sempre tutta la larghezza disponibile */
+            max-width: none;   /* NESSUN LIMITE! Continua ad allargarsi all'infinito */
+            padding: 0 40px;   /* Uno spazio fisso dal bordo dello schermo per non "toccare" i lati */
         }
 
         /* === HEADER === */
@@ -114,13 +121,30 @@
 
         .nav-right {
             display: flex;
-            gap: 15px;
+            align-items: center; /* Centra verticalmente il tasto verde e la scritta LIVE */
+            gap: 20px;           /* Spazio tra i due elementi */
             font-size: 0.8rem;
             font-weight: bold;
+            height: 100%;        /* Prende tutta l'altezza della barra */
         }
 
-        .btn-green { background-color: #4caf50; color: white; padding: 4px 8px; border-radius: 3px; }
-        .btn-live { color: #ff4444; }
+        .btn-green {
+            background-color: #4caf50;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 3px;
+            display: inline-flex;
+            align-items: center;
+            text-transform: uppercase;
+        }
+
+        .btn-live {
+            color: #ff4444;
+            display: flex;
+            align-items: center; /* Centra il pallino rispetto alla parola LIVE */
+            gap: 5px;
+            text-transform: uppercase;
+        }
 
         .menu-checkbox { display: none; }
 
@@ -167,45 +191,49 @@
 
         /* === MEGA FOOTER === */
         .site-footer {
-            background-color: #1a1a1a;
+            background-color: #262626; /* Grigio scuro identico alla notizia Bordocam */
             color: #ccc;
-            padding: 50px 20px 20px 20px;
+            padding: 50px 20px 30px 20px;
             margin-top: 50px;
             font-family: 'Poppins', sans-serif;
         }
 
         .footer-container {
-            max-width: 1200px;
+            max-width: 1024px; /* Lo teniamo allineato al resto del sito */
             margin: 0 auto;
         }
 
         .footer-logo {
             text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-color);
+            font-size: 2.8rem;
+            color: #cc0000;
             font-weight: bold;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             text-transform: uppercase;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
             text-align: left;
-            border-bottom: 1px solid #333;
-            padding-bottom: 30px;
+            border-bottom: 1px solid #444; /* Riga grigia separatrice più scura */
+            padding-bottom: 40px;
             margin-bottom: 20px;
         }
 
         .footer-col h4 {
             color: white;
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-transform: uppercase;
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 20px;
+            /* IL TRUCCO DELL'ANGOLO BLU */
+            border-bottom: none;
+            border-top: 3px solid #3b71b9;
+            border-left: 3px solid #3b71b9;
+            padding-top: 10px;
+            padding-left: 15px;
             display: inline-block;
-            padding-bottom: 5px;
         }
 
         .footer-col ul {
@@ -215,30 +243,45 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .footer-col ul li a {
-            color: #999;
+            color: #f4f4f4; /* Bianco più luminoso come l'originale */
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
         .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Nuova classe per i social */
+        .footer-socials {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .footer-socials a {
             color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .footer-bottom {
             text-align: center;
             font-size: 0.75rem;
-            color: #666;
+            color: #888;
         }
+
         /* === STILE HERO ARTICLE SCURO === */
         .dark-hero {
             display: flex;
             flex-direction: column;
-            background-color: #262626; /* Grigio molto scuro */
-            margin-bottom: 20px;
+            background-color: #262626;
+            margin-bottom: 30px;
         }
 
         .image-wrapper {
@@ -251,13 +294,13 @@
             position: absolute;
             bottom: 0;
             left: 50%;
-            transform: translate(-50%, 50%); /* Posiziona esattamente a metà del bordo inferiore */
-            background-color: #3b71b9; /* Azzurro Tuttosport */
+            transform: translate(-50%, 50%);
+            background-color: #3b71b9;
             color: white;
-            padding: 5px 20px;
+            padding: 8px 30px; /* Più spazio interno */
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            font-size: 2rem;
+            font-size: 2.8rem; /* Font molto più grande! */
             text-transform: uppercase;
             letter-spacing: -1px;
             white-space: nowrap;
@@ -338,14 +381,17 @@
 <body>
 
 <nav class="full-width-nav">
-    <div class="nav-container">
-        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-        <label for="menu-toggle" class="burger-icon">
-            <div class="burger-lines"><span></span><span></span><span></span></div>
-            <span class="search-icon">🔍</span>
-        </label>
+    <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; height: 50px;">
 
-        <ul class="nav-menu">
+        <div style="flex: 1; display: flex; align-items: center;">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="burger-icon">
+                <div class="burger-lines"><span></span><span></span><span></span></div>
+                <span class="search-icon" style="color: white; margin-left: 10px;">🔍</span>
+            </label>
+        </div>
+
+        <ul class="nav-menu" style="display: flex; justify-content: center; margin: 0; padding: 0;">
             <li><a href="#">Classifica</a></li>
             <li><a href="#">Calendario</a></li>
             <li><a href="#">Serie A</a></li>
@@ -356,20 +402,36 @@
             <li><a href="#">Casinò</a></li>
         </ul>
 
-        <div class="nav-right">
-            <span class="btn-green">CONTENUTI PLUS</span>
-            <span class="btn-live">• LIVE</span>
+        <div class="nav-right" style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
+            <span class="btn-green" style="background-color: #4caf50; color: white; padding: 6px 12px; border-radius: 3px; display: inline-flex; align-items: center; text-transform: uppercase;">CONTENUTI PLUS</span>
+            <span class="btn-live" style="color: #ff4444; display: flex; align-items: center; gap: 5px; text-transform: uppercase;">
+                    <span style="font-size: 1.4rem; line-height: 0; margin-top: -2px;">&bull;</span> LIVE
+                </span>
         </div>
+
     </div>
 </nav>
 
 <header class="full-width-header">
-    <div class="header-container">
-        <div class="header-date" style="color: #666; font-size: 0.8rem;">MERCOLEDÌ 15 APRILE 2026</div>
-        <div class="logo">TUTTOSPORT</div>
-        <div class="header-actions">
-            <button style="background-color: #4caf50; color: white; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 4px;">ABBONATI ORA</button>
+    <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
+
+        <div class="header-date" style="flex: 1; color: #666; font-size: 0.8rem; font-family: 'Poppins', sans-serif;">GIOVEDÌ 16 APRILE 2026</div>
+
+        <div class="logo" style="text-align: center;">
+            <span style="color: var(--primary-color); font-size: 2.8rem; font-weight: bold; font-family: 'Poppins', sans-serif; text-transform: uppercase;">SCALINGA</span>
         </div>
+
+        <div class="header-actions" style="flex: 1; display: flex; gap: 15px; align-items: center; justify-content: flex-end;">
+            <button style="background-color: #4caf50; color: white; border: none; padding: 8px 15px; font-weight: bold; cursor: pointer; border-radius: 4px; font-family: 'Poppins', sans-serif;">ABAbBONATI ORA</button>
+            <button style="background-color: white; color: #333; border: 1px solid #333; padding: 8px 15px; font-weight: bold; cursor: pointer; border-radius: 4px; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                LEGGI IL GIORNALE
+            </button>
+            <a href="#" style="color: #333; display: flex; align-items: center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </a>
+        </div>
+
     </div>
 </header>
 
@@ -377,27 +439,73 @@
 
     <div class="top-banner" style="text-align: center; margin-bottom: 20px; background-color: white; padding: 10px;">
         <p style="font-size: 0.7rem; color: #999; text-transform: uppercase; margin-bottom: 5px;">Pubblicità</p>
-        <img src="https://placehold.co/970x250" alt="Mega Banner" style="max-width: 100%; height: auto;">
+        <img src="https://placehold.co/970x90" alt="Mega Banner" style="max-width: 100%; height: auto;">
     </div>
 
-    <main style="background-color: white; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+    <main style="background-color: white; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
 
-        <h2 class="section-header" style="font-size: 1.2rem; color: #666; border-left: none; border-bottom: 2px solid var(--primary-color); padding: 0 0 5px 0; margin-top: 0;">IN COPERTINA</h2>
+        <article class="dark-hero" style="margin-bottom: 0;">
+            <div class="image-wrapper">
+                <img src="https://placehold.co/1200x500" alt="Notizia Principale" style="width: 100%;">
+                <span class="overlay-badge">MERCATO CENTRALE</span>
+            </div>
+            <div class="dark-text-content">
+                <p>
+                    <span class="cat-blue">Calciomercato</span>
+                    <span class="date-grey">16 aprile 2026, 10:01</span>
+                </p>
+                <h1>Tutto pronto per l'ossessione di Comolli e Spalletti. E Chiellini tratta il diamante greco</h1>
+            </div>
+        </article>
+
+        <div class="live-widget" style="border-bottom: 1px solid #eee; margin-bottom: 30px;">
+            <div class="live-header">
+                <span class="live-text"><span style="font-size: 1.5rem; line-height: 0;">&bull;</span> LIVE</span>
+                <span class="live-tag-active">Champions League</span>
+                <span class="live-tag">Tennis</span>
+            </div>
+
+            <div class="live-matches-grid">
+                <div class="score-box">
+                    <div class="score-row-container">
+                        <div class="teams-col">
+                            <div class="team-item">⚽ Bayern</div>
+                            <div class="team-item">⚽ Real Madrid</div>
+                        </div>
+                        <div class="scores-col">
+                            <span>0</span><span>0</span>
+                        </div>
+                    </div>
+                    <div class="score-date">16.04.2026 <strong>21:00</strong></div>
+                </div>
+
+                <div class="score-box">
+                    <div class="score-row-container">
+                        <div class="teams-col">
+                            <div class="team-item">⚽ Arsenal</div>
+                            <div class="team-item">⚽ S. Lisbona</div>
+                        </div>
+                        <div class="scores-col">
+                            <span>0</span><span>0</span>
+                        </div>
+                    </div>
+                    <div class="score-date">16.04.2026 <strong>21:00</strong></div>
+                </div>
+            </div>
+        </div>
 
         <section class="hero-section">
-            <article class="dark-hero">
-                <div class="image-wrapper">
-                    <img src="https://placehold.co/800x450" alt="Notizia Principale" style="width: 100%;">
-                    <span class="overlay-badge">Bordocam</span>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <img src="https://placehold.co/400x250" alt="Sub news" style="width: 100%; margin-bottom: 10px;">
+                    <h3 style="font-size: 1.1rem; line-height: 1.2;">Milik, nuovo infortunio e stagione finita. I tifosi Juve ridono per non piangere</h3>
                 </div>
-                <div class="dark-text-content">
-                    <p>
-                        <span class="cat-blue">Juventus</span>
-                        <span class="date-grey">15 aprile 2026, 16:57</span>
-                    </p>
-                    <h1>L'Atalanta-Juve che non avete visto: "Potevi darne 7", sveglia a Miretti e siparietto Comolli-Elkann</h1>
+                <div>
+                    <img src="https://placehold.co/400x250" alt="Sub news" style="width: 100%; margin-bottom: 10px;">
+                    <h3 style="font-size: 1.1rem; line-height: 1.2;">Locatelli come McKennie, rinnovo comodissimo: Spalletti da Fagioli alle chiavi Juve</h3>
                 </div>
-            </article>
+            </div>
 
             <aside class="sidebar">
                 <article class="side-article" style="background: none; padding: 0;">
@@ -505,75 +613,128 @@
             </article>
         </section>
 
+        <div style="text-align: center; margin: 40px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 20px 0;">
+            <p style="font-size: 0.7rem; color: #999; text-transform: uppercase; margin-bottom: 5px;">Pubblicità</p>
+            <img src="https://placehold.co/970x90" alt="Banner Orizzontale" style="max-width: 100%;">
+        </div>
+
+        <h2 style="font-size: 1.5rem; font-family: 'Poppins', sans-serif; text-transform: uppercase; color: #333; margin-bottom: 20px; border-bottom: 3px solid #3b71b9; padding-bottom: 5px; display: inline-block;">CALCIO</h2>
+
+        <section style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px;">
+
+            <div>
+                <img src="https://placehold.co/300x200" alt="News" style="width: 100%; margin-bottom: 10px;">
+                <h3 style="font-size: 1rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Mercato Juve, l'annuncio improvviso: i dettagli</h3>
+            </div>
+
+            <div>
+                <img src="https://placehold.co/300x200" alt="News" style="width: 100%; margin-bottom: 10px;">
+                <h3 style="font-size: 1rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Inter, la rabbia di Inzaghi dopo il pari col Cagliari</h3>
+            </div>
+
+            <div>
+                <img src="https://placehold.co/300x200" alt="News" style="width: 100%; margin-bottom: 10px;">
+                <h3 style="font-size: 1rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Milan, parla l'allenatore: "Dobbiamo svegliarci subito"</h3>
+            </div>
+
+            <div>
+                <img src="https://placehold.co/300x200" alt="News" style="width: 100%; margin-bottom: 10px;">
+                <h3 style="font-size: 1rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Serie A, tutti i risultati e la classifica aggiornata</h3>
+            </div>
+
+        </section>
+
     </main>
-</div> <footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-logo">TUTTOSPORT</div>
-
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Calcio</h4>
-                <ul>
-                    <li><a href="#">Live</a></li>
-                    <li><a href="#">Serie A</a></li>
-                    <li><a href="#">Serie B</a></li>
-                    <li><a href="#">Champions League</a></li>
-                    <li><a href="#">Calciomercato</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Altri Sport</h4>
-                <ul>
-                    <li><a href="#">Motori</a></li>
-                    <li><a href="#">Tennis</a></li>
-                    <li><a href="#">Basket</a></li>
-                    <li><a href="#">Ciclismo</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Network</h4>
-                <ul>
-                    <li><a href="#">Auto</a></li>
-                    <li><a href="#">Autosprint</a></li>
-                    <li><a href="#">Motosprint</a></li>
-                    <li><a href="#">Guerin Sportivo</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Utility</h4>
-                <ul>
-                    <li><a href="#">Abbonamenti</a></li>
-                    <li><a href="#">Prima pagina</a></li>
-                    <li><a href="#">Edizione digitale</a></li>
-                    <li><a href="#">Store</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Assistenza</h4>
-                <ul>
-                    <li><a href="#">Contatti</a></li>
-                    <li><a href="#">La Redazione</a></li>
-                    <li><a href="#">Faq</a></li>
-                    <li><a href="#">Nota Legale</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Altro</h4>
-                <ul>
-                    <li><a href="#">Pubblicità</a></li>
-                    <li><a href="#">Registrazione</a></li>
-                    <li><a href="#">Site Map</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 Progettazione e Produzione Multimediale - Esame Gabriele Fabbri</p>
-            <p>Tutti i contenuti sono fittizi e a scopo didattico. Layout ispirato a Tuttosport.</p>
-        </div>
     </div>
-</footer>
+        <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-logo">SCALINGA</div>
 
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Calcio</h4>
+                    <ul>
+                        <li><a href="#">Live</a></li>
+                        <li><a href="#">Serie A</a></li>
+                        <li><a href="#">Serie B</a></li>
+                        <li><a href="#">Champions League</a></li>
+                        <li><a href="#">Europa League</a></li>
+                        <li><a href="#">Calcio Estero</a></li>
+                        <li><a href="#">Calciomercato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Altri Sport</h4>
+                    <ul>
+                        <li><a href="#">Sci</a></li>
+                        <li><a href="#">Rugby</a></li>
+                        <li><a href="#">Ciclismo</a></li>
+                        <li><a href="#">Tutto Running</a></li>
+                        <li><a href="#">Golf</a></li>
+                        <li><a href="#">Bocce</a></li>
+                        <li><a href="#">eSports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Network</h4>
+                    <ul>
+                        <li><a href="#">Auto</a></li>
+                        <li><a href="#">Autosprint</a></li>
+                        <li><a href="#">Inmoto</a></li>
+                        <li><a href="#">Motosprint</a></li>
+                        <li><a href="#">Guerin Sportivo</a></li>
+                        <li><a href="#">Sportnetwork</a></li>
+                        <li><a href="#">Conti Editore</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Utility</h4>
+                    <ul>
+                        <li><a href="#">Rss</a></li>
+                        <li><a href="#">Abbonamenti</a></li>
+                        <li><a href="#">Prima pagina</a></li>
+                        <li><a href="#">Edizione digitale</a></li>
+                        <li><a href="#">Store</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Assistenza</h4>
+                    <ul>
+                        <li><a href="#">Contatti</a></li>
+                        <li><a href="#">La Redazione</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Nota Legale</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Gestione Cookie</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cond. Generali</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Altro</h4>
+                    <ul>
+                        <li><a href="#">Pubblicità</a></li>
+                        <li><a href="#">Registrazione</a></li>
+                        <li><a href="#">Site Map</a></li>
+                        <li><a href="#">Abbonamenti</a></li>
+                        <li><a href="#">Casinò</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-socials">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">Telegram</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Progettazione e Produzione Multimediale - Esame Gabriele Fabbri</p>
+                <p>Tutti i contenuti sono fittizi e a scopo didattico.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
