@@ -14,6 +14,11 @@
             font-family: sans-serif;
         }
 
+        body, html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         :root {
             --primary-color: #cc0000; /* Rosso Tuttosport */
             --secondary-color: #ffca28;
@@ -359,53 +364,62 @@
         /* =========================================
        MEDIA QUERIES (ADATTABILITÀ SMARTPHONE DEFINITIVA)
        ========================================= */
+        /* =========================================
+           MEDIA QUERIES (ADATTABILITÀ SMARTPHONE CON MENU SCORREVOLE)
+           ========================================= */
+        /* =========================================
+           MEDIA QUERIES (ADATTABILITÀ SMARTPHONE CON MENU SCORREVOLE E FIX OVERFLOW)
+           ========================================= */
         @media (max-width: 768px) {
 
-            /* 1. HEADER E NAVIGAZIONE (Manteniamo il tuo codice originale per il menu) */
-            .header-container { flex-direction: column; gap: 10px; text-align: center; }
+            /* 1. HEADER E NAVIGAZIONE (Riduciamo i margini laterali) */
+            .header-container, .nav-container, main { padding: 0 10px !important; }
             .header-date, .header-actions, .nav-right { display: none !important; }
 
+            /* MENU ORIZZONTALE SCORREVOLE (Manteniamo il tuo codice) */
             ul.nav-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 50px;
-                left: 0;
+                display: flex !important;
+                flex-direction: row !important;
+                position: static !important;
                 width: 100%;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 10px 15px;
                 background-color: #1a1a1a;
-                z-index: 100;
-                padding: 20px;
+                gap: 20px;
+                scrollbar-width: thin;
+                scrollbar-color: #cc0000 #333;
             }
-
-            /* Fa apparire il menu quando si clicca sull'icona hamburger */
-            .menu-checkbox:checked ~ ul.nav-menu { display: flex; }
+            ul.nav-menu::-webkit-scrollbar { height: 4px; }
+            ul.nav-menu::-webkit-scrollbar-track { background: #333; }
+            ul.nav-menu::-webkit-scrollbar-thumb { background: #cc0000; border-radius: 10px; }
+            ul.nav-menu li { display: inline-block; }
+            .burger-icon { display: none !important; }
 
             /* 2. PROPORZIONI NOTIZIA PRINCIPALE */
             .dark-hero h1 { font-size: 1.5rem !important; }
             .overlay-badge { font-size: 1.2rem; padding: 5px 15px; }
 
-            /* 3. GRIGLIE NOTIZIE E SIDEBAR */
-            .hero-section {
-                display: flex;
-                flex-direction: column; /* Impila la colonna notizie e la sidebar una sull'altra */
+            /* 3. SOLUZIONE PER LA BARRA LIVE (Da affiancate a impilate) */
+            .live-matches-grid {
+                display: flex !important; /* Sostituisce la griglia */
+                flex-direction: column !important; /* Mette le partite una sotto l'altra */
+                gap: 15px !important;
             }
 
-            .hero-section > div {
-                grid-template-columns: 1fr !important; /* Le 2 sotto-notizie diventano 1 singola colonna */
-            }
+            /* 4. GRIGLIE NOTIZIE E SIDEBAR */
+            .hero-section { display: flex; flex-direction: column; }
+            .hero-section > div { grid-template-columns: 1fr !important; }
 
-            /* 4. SEZIONE CALCIO (Da 4 colonne a 2 colonne su telefono) */
+            /* 5. SEZIONE CALCIO (Da 4 colonne a 2 colonne su telefono) */
             section[style*="grid-template-columns: repeat(4"] {
                 grid-template-columns: 1fr 1fr !important;
             }
 
-            /* 5. MEGA FOOTER (Da 6 colonne orizzontali a griglia 2x3) */
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            /* 6. MEGA FOOTER (Da 6 colonne orizzontali a griglia 2x3) */
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
-</head>
 <body>
 
 <nav class="full-width-nav">
