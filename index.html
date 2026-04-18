@@ -356,9 +356,14 @@
         .score-date { text-align: right; font-size: 0.7rem; color: #888; margin-top: 10px;}
 
         /* === MEDIA QUERIES === */
+        /* =========================================
+       MEDIA QUERIES (ADATTABILITÀ SMARTPHONE DEFINITIVA)
+       ========================================= */
         @media (max-width: 768px) {
-            .header-container { flex-direction: column; gap: 15px; text-align: center; }
-            .header-date, .header-actions { display: none; }
+
+            /* 1. HEADER E NAVIGAZIONE (Manteniamo il tuo codice originale per il menu) */
+            .header-container { flex-direction: column; gap: 10px; text-align: center; }
+            .header-date, .header-actions, .nav-right { display: none !important; }
 
             ul.nav-menu {
                 display: none;
@@ -372,9 +377,32 @@
                 padding: 20px;
             }
 
+            /* Fa apparire il menu quando si clicca sull'icona hamburger */
             .menu-checkbox:checked ~ ul.nav-menu { display: flex; }
-            .hero-section { grid-template-columns: 1fr; }
-            .nav-right { display: none; }
+
+            /* 2. PROPORZIONI NOTIZIA PRINCIPALE */
+            .dark-hero h1 { font-size: 1.5rem !important; }
+            .overlay-badge { font-size: 1.2rem; padding: 5px 15px; }
+
+            /* 3. GRIGLIE NOTIZIE E SIDEBAR */
+            .hero-section {
+                display: flex;
+                flex-direction: column; /* Impila la colonna notizie e la sidebar una sull'altra */
+            }
+
+            .hero-section > div {
+                grid-template-columns: 1fr !important; /* Le 2 sotto-notizie diventano 1 singola colonna */
+            }
+
+            /* 4. SEZIONE CALCIO (Da 4 colonne a 2 colonne su telefono) */
+            section[style*="grid-template-columns: repeat(4"] {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            /* 5. MEGA FOOTER (Da 6 colonne orizzontali a griglia 2x3) */
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
@@ -418,7 +446,7 @@
         <div class="header-date" style="flex: 1; color: #666; font-size: 0.8rem; font-family: 'Poppins', sans-serif;">GIOVEDÌ 16 APRILE 2026</div>
 
         <div class="logo" style="text-align: center;">
-            <span style="color: var(--primary-color); font-size: 2.8rem; font-weight: bold; font-family: 'Poppins', sans-serif; text-transform: uppercase;">SCALINGA</span>
+            <span style="color: var(--primary-color); font-size: 2.8rem; font-weight: bold; font-family: 'Poppins', sans-serif; text-transform: uppercase;">TUTTOSPORT</span>
         </div>
 
         <div class="header-actions" style="flex: 1; display: flex; gap: 15px; align-items: center; justify-content: flex-end;">
