@@ -327,7 +327,6 @@
         .date-grey { color: #aaa; font-size: 0.75rem; font-weight: bold;}
 
         /* === WIDGET RISULTATI LIVE === */
-        /* === NUOVO WIDGET RISULTATI LIVE === */
         .live-widget {
             background-color: white;
             padding: 10px 0 20px 0;
@@ -406,6 +405,60 @@
             gap: 30px;
             margin-bottom: 30px;
         }
+
+        /* === EFFETTO HOVER E MANINA (Main + Sidebar) === */
+        article h1, article h2, article h3, .dark-text-content h1,
+        .sidebar p, .side-article p, .section-title-blue {
+            cursor: pointer; /* Fa apparire la manina */
+            transition: color 0.2s ease-in-out;
+        }
+
+        /* Effetto al passaggio del mouse: tutto diventa blu chiaro */
+        article h1:hover, article h2:hover, article h3:hover, .dark-text-content h1:hover,
+        .sidebar p:hover, .side-article p:hover, .section-title-blue:hover {
+            color: #3b71b9;
+        }
+        /* === EFFETTO HOVER PER MENU, BOTTONI E FOOTER === */
+        .nav-menu a, .footer-col a, .footer-socials a {
+            transition: color 0.2s ease-in-out;
+            cursor: pointer; /* Fa apparire la manina */
+        }
+
+        /* Il testo del menu e del footer diventa blu chiaro al passaggio del mouse */
+        .nav-menu a:hover, .footer-col a:hover, .footer-socials a:hover {
+            color: #3b71b9 !important;
+        }
+
+        /* Effetto per i bottoni: diventano blu chiaro quando ci passi sopra */
+        .btn-green, button {
+            transition: background-color 0.2s ease-in-out;
+            cursor: pointer; /* Fa apparire la manina sui pulsanti */
+        }
+
+        .btn-green:hover, button:hover {
+            background-color: #3b71b9 !important;
+            border-color: #3b71b9 !important;
+            color: white !important;
+        }
+        /* === EFFETTO HOVER E MANINA PER BURGER MENU === */
+        .burger-icon {
+            cursor: pointer; /* Fa apparire la manina */
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .burger-icon:hover {
+            opacity: 0.7; /* Schiarisce leggermente l'icona al passaggio del mouse */
+        }
+
+        .burger-lines span {
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        /* Cambia il colore delle linee in blu quando passi il mouse sopra l'icona */
+        .burger-icon:hover .burger-lines span {
+            background-color: #3b71b9;
+        }
+
         /* === MEDIA QUERIES === */
         @media (max-width: 768px) {
 
@@ -457,56 +510,55 @@
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
-<body>
+<body role="document">
 
-<nav class="full-width-nav">
+<nav class="full-width-nav" role="navigation" aria-label="Menu principale">
     <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; height: 50px;">
 
         <div style="flex: 1; display: flex; align-items: center;">
             <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-            <label for="menu-toggle" class="burger-icon">
+            <label for="menu-toggle" class="burger-icon" aria-label="Apri menu di navigazione">
                 <div class="burger-lines"><span></span><span></span><span></span></div>
-                <span class="search-icon" style="color: white; margin-left: 10px;">🔍</span>
             </label>
         </div>
 
         <ul class="nav-menu" style="display: flex; justify-content: center; margin: 0; padding: 0;">
-            <li><a href="#">Classifica</a></li>
-            <li><a href="#">Calendario</a></li>
-            <li><a href="#">Serie A</a></li>
-            <li><a href="#">Juventus</a></li>
-            <li><a href="#">Torino</a></li>
-            <li><a href="#">Tennis</a></li>
-            <li><a href="#">Scommesse</a></li>
-            <li><a href="#">Casinò</a></li>
+            <li><a href="#">Lorem Ipsum</a></li>
+            <li><a href="#">Dolor Sit</a></li>
+            <li><a href="#">Consectetur</a></li>
+            <li><a href="#">Adipiscing</a></li>
+            <li><a href="#">Elit Sed</a></li>
+            <li><a href="#">Eiusmod</a></li>
+            <li><a href="#">Tempor</a></li>
+            <li><a href="#">Incididunt</a></li>
         </ul>
 
         <div class="nav-right" style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
-            <span class="btn-green" style="background-color: #4caf50; color: white; padding: 6px 12px; border-radius: 3px; display: inline-flex; align-items: center; text-transform: uppercase;">CONTENUTI PLUS</span>
-            <span class="btn-live" style="color: #ff4444; display: flex; align-items: center; gap: 5px; text-transform: uppercase;">
-                    <span style="font-size: 1.4rem; line-height: 0; margin-top: -2px;">&bull;</span> LIVE
-                </span>
+            <span class="btn-green" style="background-color: #4caf50; color: white; padding: 6px 12px; border-radius: 3px; display: inline-flex; align-items: center; text-transform: uppercase; cursor: pointer;">LOREM PLUS</span>
+            <span class="btn-live" style="color: #ff4444; display: flex; align-items: center; gap: 5px; text-transform: uppercase; cursor: pointer;">
+                <span style="font-size: 1.4rem; line-height: 0; margin-top: -2px;">&bull;</span> LIVE
+            </span>
         </div>
 
     </div>
 </nav>
 
-<header class="full-width-header">
+<header class="full-width-header" role="banner">
     <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
 
-        <div class="header-date" style="flex: 1; color: #666; font-size: 0.8rem; font-family: 'Poppins', sans-serif;">GIOVEDÌ 16 APRILE 2026</div>
+        <div class="header-date" style="flex: 1; color: #666; font-size: 0.8rem; font-family: 'Poppins', sans-serif;">LOREM IPSUM, 16 APRIL 2026</div>
 
         <div class="logo" style="text-align: center;">
-            <span style="color: var(--primary-color); font-size: 2.8rem; font-weight: bold; font-family: 'Poppins', sans-serif; text-transform: uppercase;">TUTTOSPORT</span>
+            <span style="color: var(--primary-color); font-size: 2.8rem; font-weight: bold; font-family: 'Poppins', sans-serif; text-transform: uppercase; cursor: pointer;">NEWSLAYOUT</span>
         </div>
 
         <div class="header-actions" style="flex: 1; display: flex; gap: 15px; align-items: center; justify-content: flex-end;">
-            <button style="background-color: #4caf50; color: white; border: none; padding: 8px 15px; font-weight: bold; cursor: pointer; border-radius: 4px; font-family: 'Poppins', sans-serif;">ABAbBONATI ORA</button>
-            <button style="background-color: white; color: #333; border: 1px solid #333; padding: 8px 15px; font-weight: bold; cursor: pointer; border-radius: 4px; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
+            <button aria-label="Sottoscrivi abbonamento" style="background-color: #4caf50; color: white; border: none; padding: 8px 15px; font-weight: bold; cursor: pointer; border-radius: 4px; font-family: 'Poppins', sans-serif;">SUBSCRIBE</button>
+            <button aria-label="Leggi edizione digitale" style="background-color: white; color: #333; border: 1px solid #333; padding: 8px 15px; font-weight: bold; cursor: pointer; border-radius: 4px; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-                LEGGI IL GIORNALE
+                READ NEWSPAPER
             </button>
-            <a href="#" style="color: #333; display: flex; align-items: center;">
+            <a href="#" aria-label="Profilo utente" style="color: #333; display: flex; align-items: center;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </a>
         </div>
@@ -517,39 +569,39 @@
 <div class="container">
 
     <div class="top-banner" style="text-align: center; margin-bottom: 20px; background-color: white; padding: 10px;">
-        <p style="font-size: 0.7rem; color: #999; text-transform: uppercase; margin-bottom: 5px;">Pubblicità</p>
-        <img src="https://placehold.co/970x90" alt="Mega Banner" style="max-width: 100%; height: auto;">
+        <p style="font-size: 0.7rem; color: #999; text-transform: uppercase; margin-bottom: 5px;">Advertisement</p>
+        <img src="https://placehold.co/970x90?text=Top+Banner+Placeholder" alt="Advertisement Banner" style="max-width: 100%; height: auto;">
     </div>
 
-    <main style="background-color: white; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+    <main role="main" style="background-color: white; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
 
         <article class="dark-hero" style="margin-bottom: 0;">
             <div class="image-wrapper">
-                <img src="https://placehold.co/1200x500" alt="Notizia Principale" style="width: 100%;">
-                <span class="overlay-badge">MERCATO CENTRALE</span>
+                <img src="https://placehold.co/1200x500?text=Main+Hero+Image" alt="Main highlight placeholder" style="width: 100%;">
+                <span class="overlay-badge">LOREM IPSUM</span>
             </div>
             <div class="dark-text-content">
                 <p>
-                    <span class="cat-blue">Calciomercato</span>
-                    <span class="date-grey">16 aprile 2026, 10:01</span>
+                    <span class="cat-blue">General News</span>
+                    <span class="date-grey">16 April 2026, 10:01</span>
                 </p>
-                <h1>Tutto pronto per l'ossessione di Comolli e Spalletti. E Chiellini tratta il diamante greco</h1>
+                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</h1>
             </div>
         </article>
 
         <div class="live-widget" style="border-bottom: 1px solid #eee; margin-bottom: 30px;">
             <div class="live-header">
                 <span class="live-text"><span style="font-size: 1.5rem; line-height: 0;">&bull;</span> LIVE</span>
-                <span class="live-tag-active">Champions League</span>
-                <span class="live-tag">Tennis</span>
+                <span class="live-tag-active">Category A</span>
+                <span class="live-tag">Category B</span>
             </div>
 
             <div class="live-matches-grid">
-                <div class="score-box">
+                <div class="score-box" aria-label="Match score">
                     <div class="score-row-container">
                         <div class="teams-col">
-                            <div class="team-item">⚽ Bayern</div>
-                            <div class="team-item">⚽ Real Madrid</div>
+                            <div class="team-item">⚽ Team Alpha</div>
+                            <div class="team-item">⚽ Team Beta</div>
                         </div>
                         <div class="scores-col">
                             <span>0</span><span>0</span>
@@ -558,11 +610,11 @@
                     <div class="score-date">16.04.2026 <strong>21:00</strong></div>
                 </div>
 
-                <div class="score-box">
+                <div class="score-box" aria-label="Match score">
                     <div class="score-row-container">
                         <div class="teams-col">
-                            <div class="team-item">⚽ Arsenal</div>
-                            <div class="team-item">⚽ S. Lisbona</div>
+                            <div class="team-item">⚽ Team Gamma</div>
+                            <div class="team-item">⚽ Team Delta</div>
                         </div>
                         <div class="scores-col">
                             <span>0</span><span>0</span>
@@ -575,281 +627,244 @@
 
         <section class="hero-section">
             <div class="cascata-container">
-                <span class="section-title-blue">IN COPERTINA</span>
+                <span class="section-title-blue">LOREM SECTION</span>
 
                 <article class="cascata-1">
                     <div class="image-wrapper">
-                        <img src="https://placehold.co/800x450" alt="Gigante" style="width: 100%;">
-                        <span class="badge-red">JUVENTUS</span>
+                        <img src="https://placehold.co/800x450?text=Cascata+1+Image" alt="Large news placeholder" style="width: 100%;">
+                        <span class="badge-red">TOPIC 1</span>
                     </div>
-                    <p class="date-grey" style="margin-top: 10px;">20 aprile 2026, 10:49</p>
-                    <h1 style="font-size: 2rem; line-height: 1.1; margin-top: 5px; font-family: 'Poppins', sans-serif;">“È allucinante”, “Mi hanno chiamato amici e parenti”: Juve tra meraviglia e ironia...</h1>
+                    <p class="date-grey" style="margin-top: 10px;">20 April 2026, 10:49</p>
+                    <h1 style="font-size: 2rem; line-height: 1.1; margin-top: 5px; font-family: 'Poppins', sans-serif;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore...</h1>
                 </article>
 
                 <div class="cascata-2">
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/400x250" alt="Media" style="width: 100%;">
-                            <span class="badge-black">JUVENTUS</span>
+                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder" style="width: 100%;">
+                            <span class="badge-black">TOPIC 2</span>
                         </div>
-                        <p class="date-grey" style="margin-top: 10px;">20 aprile 2026, 10:21</p>
-                        <h3 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">"La cosa migliore successa alla Juve negli ultimi 5 anni"...</h3>
+                        <p class="date-grey" style="margin-top: 10px;">20 April 2026, 10:21</p>
+                        <h3 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Excepteur sint occaecat cupidatat non proident sunt in culpa qui...</h3>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/400x250" alt="Media" style="width: 100%;">
-                            <span class="badge-black">JUVENTUS</span>
+                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder" style="width: 100%;">
+                            <span class="badge-black">TOPIC 3</span>
                         </div>
-                        <p class="date-grey" style="margin-top: 10px;">19 aprile 2026, 20:59</p>
-                        <h3 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Manninger, omaggio da brividi allo Stadium...</h3>
+                        <p class="date-grey" style="margin-top: 10px;">19 April 2026, 20:59</p>
+                        <h3 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</h3>
                     </article>
                 </div>
 
                 <div class="cascata-3">
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150" alt="Piccola" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">JUVENTUS</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder" style="width: 100%;">
+                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">INFO</span>
                         </div>
-                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">"Mi hai mandato via tu..."</h3>
+                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Sed ut perspiciatis unde omnis iste...</h3>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150" alt="Piccola" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">TENNIS</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder" style="width: 100%;">
+                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">INFO</span>
                         </div>
-                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">"Sinner vigliacco", i tifosi...</h3>
+                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Nemo enim ipsam voluptatem quia...</h3>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150" alt="Piccola" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">GOSSIP</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder" style="width: 100%;">
+                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">INFO</span>
                         </div>
-                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Dal Charlton a Onlyfans...</h3>
+                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Neque porro quisquam est qui...</h3>
                     </article>
                 </div>
             </div>
 
             <aside class="sidebar">
-                <span class="section-title-blue">IL VIDEO DEL GIORNO</span>
+                <span class="section-title-blue">SIDEBAR SECTION</span>
                 <article class="side-article" style="background: none; padding: 0;">
-                    <img src="https://placehold.co/400x250" alt="Video" style="width: 100%;">
-                    <p style="font-weight: bold; font-size: 0.95rem; margin-top: 10px; margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Mettete sul telaio di Spalletti le gomme...</p>
+                    <img src="https://placehold.co/400x250?text=Video+Placeholder" alt="Side video content placeholder" style="width: 100%;">
+                    <p style="font-weight: bold; font-size: 0.95rem; margin-top: 10px; margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Quis autem vel eum iure reprehenderit qui in ea voluptate...</p>
 
                     <div style="text-align: center; background-color: #f9f9f9; padding: 15px; border: 1px solid #eee;">
-                        <p style="font-size: 0.7rem; color: #999;">Pubblicità</p>
-                        <img src="https://placehold.co/300x400" alt="Banner verticale" style="width: 100%;">
+                        <p style="font-size: 0.7rem; color: #999;">Advertisement</p>
+                        <img src="https://placehold.co/300x400?text=Side+Banner+Placeholder" alt="Vertical advertisement" style="width: 100%;">
                     </div>
                 </article>
             </aside>
         </section>
 
         <div style="text-align: center; margin: 20px 0 40px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 20px 0;">
-            <p style="font-size: 0.7rem; color: #999; text-transform: uppercase; margin-bottom: 5px;">Pubblicità</p>
-            <img src="https://placehold.co/970x150" alt="Banner E-Play" style="max-width: 100%;">
+            <p style="font-size: 0.7rem; color: #999; text-transform: uppercase; margin-bottom: 5px;">Advertisement</p>
+            <img src="https://placehold.co/970x150?text=Mid+Banner+Placeholder" alt="Horizontal advertisement" style="max-width: 100%;">
         </div>
 
         <section class="hero-section">
             <div class="cascata-container">
-                <span class="section-title-blue">PRIMO PIANO</span>
+                <span class="section-title-blue">LOREM SECTION 2</span>
 
                 <article class="cascata-1">
                     <div class="image-wrapper">
-                        <img src="https://placehold.co/800x450" alt="Gigante" style="width: 100%;">
-                        <span class="badge-red">PREMIER LEAGUE</span>
+                        <img src="https://placehold.co/800x450?text=Cascata+1+Image" alt="Large news placeholder" style="width: 100%;">
+                        <span class="badge-red">MAIN CATEGORY</span>
                     </div>
-                    <p class="date-grey" style="margin-top: 10px;">20 aprile 2026, 10:58</p>
-                    <h1 style="font-size: 2rem; line-height: 1.1; margin-top: 5px; font-family: 'Poppins', sans-serif;">"Yildiz devastante", la profezia di Montella. E poi il monito a Spalletti...</h1>
+                    <p class="date-grey" style="margin-top: 10px;">20 April 2026, 10:58</p>
+                    <h1 style="font-size: 2rem; line-height: 1.1; margin-top: 5px; font-family: 'Poppins', sans-serif;">At vero eos et accusamus et iusto odio dignissimos ducimus qui...</h1>
                 </article>
 
                 <div class="cascata-2">
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/400x250" alt="Media" style="width: 100%;">
-                            <span class="badge-black">JUVENTUS</span>
+                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder" style="width: 100%;">
+                            <span class="badge-black">SUB CATEGORY</span>
                         </div>
-                        <p class="date-grey" style="margin-top: 10px;">19 aprile 2026, 22:45</p>
-                        <h3 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">"È quasi magia", "Allora esiste anche lui"...</h3>
+                        <p class="date-grey" style="margin-top: 10px;">19 April 2026, 22:45</p>
+                        <h3 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Et harum quidem rerum facilis est et expedita...</h3>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/400x250" alt="Media" style="width: 100%;">
-                            <span class="badge-black">SERIE A</span>
+                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder" style="width: 100%;">
+                            <span class="badge-black">SUB CATEGORY</span>
                         </div>
-                        <p class="date-grey" style="margin-top: 10px;">20 aprile 2026, 20:57</p>
-                        <h3 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Spalletti, "c'è un detto" per la Juve...</h3>
+                        <p class="date-grey" style="margin-top: 10px;">20 April 2026, 20:57</p>
+                        <h3 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Nam libero tempore, cum soluta nobis est eligendi...</h3>
                     </article>
                 </div>
 
                 <div class="cascata-3">
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150" alt="Piccola" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">SERIE A</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder" style="width: 100%;">
+                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">INFO</span>
                         </div>
-                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Il calendario di Juve, Como, Roma e Atalanta...</h3>
+                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Temporibus autem quibusdam et aut officiis...</h3>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150" alt="Piccola" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">JUVENTUS</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder" style="width: 100%;">
+                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">INFO</span>
                         </div>
-                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Spalletti, spazio ai giovani: chi sono i tre talenti...</h3>
+                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Itaque earum rerum hic tenetur a sapiente delectus...</h3>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150" alt="Piccola" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">L'INIZIATIVA</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder" style="width: 100%;">
+                            <span class="badge-black" style="font-size: 0.6rem; padding: 2px 6px;">INFO</span>
                         </div>
-                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">DAZN e Tuttosport: tutto il meglio dello sport...</h3>
+                        <h3 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Reiciendis voluptatibus maiores alias consequatur...</h3>
                     </article>
                 </div>
             </div>
 
             <aside class="sidebar">
                 <div style="margin-bottom: 20px; text-align: center; background: white; padding: 10px; border: 1px solid #eee;">
-                    <img src="https://placehold.co/300x400" alt="Comparatore Quote" style="width: 100%;">
+                    <img src="https://placehold.co/300x400?text=Side+Banner+1" alt="Vertical advertisement placeholder" style="width: 100%;">
                 </div>
                 <div style="text-align: center;">
-                    <img src="https://placehold.co/300x400" alt="Copertina Giornale" style="width: 100%;">
+                    <img src="https://placehold.co/300x400?text=Side+Banner+2" alt="Vertical advertisement placeholder" style="width: 100%;">
                 </div>
             </aside>
         </section>
 
         <div style="margin-bottom: 30px;">
-            <span class="section-title-blue">L'INIZIATIVA</span>
+            <span class="section-title-blue">LOREM INITIATIVE</span>
 
             <article style="display: flex; gap: 30px; align-items: center; margin-top: 15px;">
                 <div style="flex: 1.2;">
-                    <img src="https://placehold.co/600x320" alt="L'Iniziativa Holly e Benji" style="width: 100%; display: block;">
+                    <img src="https://placehold.co/600x320?text=Initiative+Featured+Image" alt="Special feature main image" style="width: 100%; display: block;">
                 </div>
                 <div style="flex: 1;">
-                    <span style="background-color: #8b4513; color: white; padding: 4px 10px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; font-family: 'Poppins', sans-serif;">IN EDICOLA</span>
-                    <p class="date-grey" style="margin-top: 15px; margin-bottom: 5px;">10 aprile 2026, 11:25</p>
-                    <h2 style="font-size: 1.8rem; line-height: 1.2; margin-top: 5px; font-family: 'Poppins', sans-serif;">Holly e Benji in edicola: arrivano le targhe da collezione</h2>
+                    <span style="background-color: #8b4513; color: white; padding: 4px 10px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; font-family: 'Poppins', sans-serif;">LABEL</span>
+                    <p class="date-grey" style="margin-top: 15px; margin-bottom: 5px;">10 April 2026, 11:25</p>
+                    <h2 style="font-size: 1.8rem; line-height: 1.2; margin-top: 5px; font-family: 'Poppins', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</h2>
                 </div>
             </article>
         </div>
 
-        <div style="text-align: center; margin: 40px 0; background-color: #f4f4f4; padding: 20px 0;">
-            <p style="font-size: 0.7rem; color: #999; text-transform: uppercase; margin-bottom: 5px;">Pubblicità</p>
-            <img src="https://placehold.co/970x150" alt="Banner Largo Basso" style="max-width: 100%;">
+        <div style="text-align: center; margin: 40px 0; background-color: #f4f4f4; padding: 20px 0; border: 1px solid #ddd;">
+            <p style="font-size: 0.7rem; color: #999; text-transform: uppercase; margin-bottom: 5px;">Advertisement</p>
+            <img src="https://placehold.co/970x150?text=Bottom+Banner+Placeholder" alt="Final advertisement banner" style="max-width: 100%;">
         </div>
-
-        <section style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px;">
-            <div>
-                <img src="https://placehold.co/300x200" alt="News" style="width: 100%; margin-bottom: 10px;">
-                <h3 style="font-size: 1rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Mercato Juve, l'annuncio improvviso: i dettagli</h3>
-            </div>
-
-            <div>
-                <img src="https://placehold.co/300x200" alt="News" style="width: 100%; margin-bottom: 10px;">
-                <h3 style="font-size: 1rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Inter, la rabbia di Inzaghi dopo il pari col Cagliari</h3>
-            </div>
-
-            <div>
-                <img src="https://placehold.co/300x200" alt="News" style="width: 100%; margin-bottom: 10px;">
-                <h3 style="font-size: 1rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Milan, parla l'allenatore: "Dobbiamo svegliarci subito"</h3>
-            </div>
-
-            <div>
-                <img src="https://placehold.co/300x200" alt="News" style="width: 100%; margin-bottom: 10px;">
-                <h3 style="font-size: 1rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Serie A, tutti i risultati e la classifica aggiornata</h3>
-            </div>
-
-        </section>
 
     </main>
-    </div>
-        <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-logo">TUTTOSPORT</div>
+</div>
 
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Calcio</h4>
-                    <ul>
-                        <li><a href="#">Live</a></li>
-                        <li><a href="#">Serie A</a></li>
-                        <li><a href="#">Serie B</a></li>
-                        <li><a href="#">Champions League</a></li>
-                        <li><a href="#">Europa League</a></li>
-                        <li><a href="#">Calcio Estero</a></li>
-                        <li><a href="#">Calciomercato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Altri Sport</h4>
-                    <ul>
-                        <li><a href="#">Sci</a></li>
-                        <li><a href="#">Rugby</a></li>
-                        <li><a href="#">Ciclismo</a></li>
-                        <li><a href="#">Tutto Running</a></li>
-                        <li><a href="#">Golf</a></li>
-                        <li><a href="#">Bocce</a></li>
-                        <li><a href="#">eSports</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Network</h4>
-                    <ul>
-                        <li><a href="#">Auto</a></li>
-                        <li><a href="#">Autosprint</a></li>
-                        <li><a href="#">Inmoto</a></li>
-                        <li><a href="#">Motosprint</a></li>
-                        <li><a href="#">Guerin Sportivo</a></li>
-                        <li><a href="#">Sportnetwork</a></li>
-                        <li><a href="#">Conti Editore</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Utility</h4>
-                    <ul>
-                        <li><a href="#">Rss</a></li>
-                        <li><a href="#">Abbonamenti</a></li>
-                        <li><a href="#">Prima pagina</a></li>
-                        <li><a href="#">Edizione digitale</a></li>
-                        <li><a href="#">Store</a></li>
-                        <li><a href="#">Sitemap</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Assistenza</h4>
-                    <ul>
-                        <li><a href="#">Contatti</a></li>
-                        <li><a href="#">La Redazione</a></li>
-                        <li><a href="#">Faq</a></li>
-                        <li><a href="#">Nota Legale</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Gestione Cookie</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cond. Generali</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Altro</h4>
-                    <ul>
-                        <li><a href="#">Pubblicità</a></li>
-                        <li><a href="#">Registrazione</a></li>
-                        <li><a href="#">Site Map</a></li>
-                        <li><a href="#">Abbonamenti</a></li>
-                        <li><a href="#">Casinò</a></li>
-                    </ul>
-                </div>
+<footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+        <div class="footer-logo" style="cursor: pointer;">NEWSLAYOUT</div>
+
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Category 1</h4>
+                <ul>
+                    <li><a href="#">Lorem Link</a></li>
+                    <li><a href="#">Dolor Link</a></li>
+                    <li><a href="#">Sit Link</a></li>
+                    <li><a href="#">Amet Link</a></li>
+                </ul>
             </div>
-
-            <div class="footer-socials">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
-                <a href="#">Telegram</a>
+            <div class="footer-col">
+                <h4>Category 2</h4>
+                <ul>
+                    <li><a href="#">Lorem Link</a></li>
+                    <li><a href="#">Dolor Link</a></li>
+                    <li><a href="#">Sit Link</a></li>
+                    <li><a href="#">Amet Link</a></li>
+                </ul>
             </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 Progettazione e Produzione Multimediale - Esame Gabriele Fabbri</p>
-                <p>Tutti i contenuti sono fittizi e a scopo didattico.</p>
+            <div class="footer-col">
+                <h4>Category 3</h4>
+                <ul>
+                    <li><a href="#">Lorem Link</a></li>
+                    <li><a href="#">Dolor Link</a></li>
+                    <li><a href="#">Sit Link</a></li>
+                    <li><a href="#">Amet Link</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Category 4</h4>
+                <ul>
+                    <li><a href="#">Lorem Link</a></li>
+                    <li><a href="#">Dolor Link</a></li>
+                    <li><a href="#">Sit Link</a></li>
+                    <li><a href="#">Amet Link</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Category 5</h4>
+                <ul>
+                    <li><a href="#">Lorem Link</a></li>
+                    <li><a href="#">Dolor Link</a></li>
+                    <li><a href="#">Sit Link</a></li>
+                    <li><a href="#">Amet Link</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Category 6</h4>
+                <ul>
+                    <li><a href="#">Lorem Link</a></li>
+                    <li><a href="#">Dolor Link</a></li>
+                    <li><a href="#">Sit Link</a></li>
+                    <li><a href="#">Amet Link</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
+
+        <div class="footer-socials">
+            <a href="#">Social Alpha</a>
+            <a href="#">Social Beta</a>
+            <a href="#">Social Gamma</a>
+            <a href="#">Social Delta</a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Progettazione e Produzione Multimediale - Student Name</p>
+            <p>This website layout is for educational purposes using placeholder content.</p>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
