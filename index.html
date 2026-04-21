@@ -6,12 +6,13 @@
     <title>Sports News Layout - Assignment</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* === RESET & VARIABILI BASE === */
+        /* reset & vars */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: sans-serif;
+            max-width: 100%;
         }
 
         body, html {
@@ -20,14 +21,14 @@
         }
 
         :root {
-            --primary-color: #cc0000; /* Rosso Tuttosport */
+            --primary-color: #cc0000;
             --secondary-color: #ffca28;
             --text-dark: #1a1a1a;
             --bg-light: #f4f4f4;
         }
 
         body {
-            background-color: #e9ecef; /* Sfondo grigio originale */
+            background-color: #e9ecef;
             color: var(--text-dark);
             line-height: 1.6;
             font-family: 'Merriweather', serif;
@@ -38,82 +39,148 @@
             letter-spacing: -0.5px;
         }
 
-        /* --- LAYOUT DELLE BARRE A TUTTO SCHERMO --- */
-        .full-width-nav {
+        /* layout base */
+        .main-nav {
             background-color: #1a1a1a;
             width: 100%;
         }
 
-        .full-width-header {
+        .site-header {
             background-color: white;
             width: 100%;
             border-bottom: 1px solid #eee;
             padding: 20px 0;
         }
 
-        /* 1. Contenitore principale delle notizie (resta compatto al centro) */
         .container {
-            max-width: 1240px; /* <-- Abbassato da 1200px a 1024px */
+            max-width: 1024px;
             margin: 0 auto;
             padding: 0 15px;
         }
 
-        /* 2. Contenitori di Navigazione e Header (Senza limiti, attaccati ai bordi!) */
         .nav-container, .header-container {
-            width: 100%;       /* Prende sempre tutta la larghezza disponibile */
-            max-width: none;   /* NESSUN LIMITE! Continua ad allargarsi all'infinito */
-            padding: 0 40px;   /* Uno spazio fisso dal bordo dello schermo per non "toccare" i lati */
-        }
-
-        /* === HEADER === */
-        .header-container {
+            width: 100%;
+            max-width: none;
+            padding: 0 40px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
 
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: var(--primary-color);
-        }
-
-        /* === NAVIGAZIONE === */
         .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             height: 50px;
         }
 
-        /* Burger e Lente */
-        .burger-icon {
+        /* header elements */
+        .header-left {
+            flex: 1;
             display: flex;
             align-items: center;
-            gap: 10px;
+        }
+
+        .desktop-date {
+            color: #575757;
+            font-size: 0.8rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .logo {
+            flex: 1;
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: var(--primary-color);
             cursor: pointer;
         }
 
-        .burger-lines span {
+        .header-actions {
+            flex: 1;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .desktop-btn {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.2s;
+        }
+
+        .btn-outline {
+            background-color: white;
+            color: #333;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .desktop-btn:hover {
+            background-color: #3b71b9;
+            border-color: #3b71b9;
+            color: white;
+        }
+
+        .user-icon {
+            color: #333;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        /* nav elements */
+        .nav-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .burger-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .burger-icon:hover {
+            opacity: 0.7;
+        }
+
+        .b-line {
             display: block;
             width: 24px;
             height: 3px;
             background-color: white;
             margin: 4px 0;
             border-radius: 2px;
+            transition: background-color 0.2s;
         }
 
-        .search-icon {
-            color: white;
-            font-size: 1.2rem;
+        .burger-icon:hover .b-line {
+            background-color: #3b71b9;
         }
 
-        /* Menu Link */
+        .mobile-burger { display: none; cursor: pointer; }
+        .mobile-burger .b-line { background-color: #1a1a1a; }
+        .menu-checkbox { display: none; }
+
         ul.nav-menu {
             display: flex;
+            justify-content: center;
             list-style: none;
             gap: 20px;
+            margin: 0;
+            padding: 0;
         }
 
         ul.nav-menu li a {
@@ -122,15 +189,22 @@
             font-weight: bold;
             text-transform: uppercase;
             font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        ul.nav-menu li a:hover {
+            color: #3b71b9;
         }
 
         .nav-right {
+            flex: 1;
             display: flex;
-            align-items: center; /* Centra verticalmente il tasto verde e la scritta LIVE */
-            gap: 20px;           /* Spazio tra i due elementi */
+            align-items: center;
+            justify-content: flex-end;
+            gap: 20px;
             font-size: 0.8rem;
             font-weight: bold;
-            height: 100%;        /* Prende tutta l'altezza della barra */
+            height: 100%;
         }
 
         .btn-green {
@@ -141,158 +215,73 @@
             display: inline-flex;
             align-items: center;
             text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.2s;
         }
+
+        .btn-green:hover { background-color: #3b71b9; }
 
         .btn-live {
             color: #ff4444;
             display: flex;
-            align-items: center; /* Centra il pallino rispetto alla parola LIVE */
+            align-items: center;
             gap: 5px;
             text-transform: uppercase;
+            cursor: pointer;
         }
 
-        .menu-checkbox { display: none; }
+        .dot { font-size: 1.4rem; line-height: 0; margin-top: -2px; }
 
-        /* === TITOLI DI SEZIONE === */
-        .section-header {
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            color: var(--text-dark);
-            border-left: 8px solid var(--primary-color);
-            padding-left: 15px;
-            margin: 40px 0 20px 0;
-            border-bottom: 1px solid #ddd;
+        /* main content grid */
+        main {
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin: 20px 0;
         }
-
-        /* === MAIN CONTENT (GRID) === */
-        main { padding: 20px 0; }
 
         .hero-section {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
+            grid-template-columns: 2.8fr 1fr;
+            gap: 30px;
             margin-bottom: 30px;
         }
 
-        .main-article img, .side-article img, .grid-article img {
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            display: block;
+        }
+
+        .image-wrapper img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        .main-article h1 { font-size: 2.5rem; margin: 15px 0; line-height: 1.1; }
-
-        .sidebar { display: flex; flex-direction: column; gap: 20px; }
-        .side-article { background-color: var(--bg-light); padding: 15px; }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        /* sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-self: start;
         }
 
-        .grid-article { border-bottom: 1px solid #ddd; padding-bottom: 15px; }
-        .grid-article h3 { margin-top: 10px; font-size: 1.1rem; }
-
-        /* === MEGA FOOTER === */
-        .site-footer {
-            background-color: #262626; /* Grigio scuro identico alla notizia Bordocam */
-            color: #ccc;
-            padding: 50px 20px 30px 20px;
-            margin-top: 50px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .footer-container {
-            max-width: 1024px; /* Lo teniamo allineato al resto del sito */
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            text-align: center;
-            font-size: 2.8rem;
-            color: #ff4d4d;
+        .side-article p {
             font-weight: bold;
-            margin-bottom: 50px;
-            text-transform: uppercase;
+            font-size: 0.95rem;
+            margin: 10px 0 20px 0;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 20px;
-            text-align: left;
-            border-bottom: 1px solid #444; /* Riga grigia separatrice più scura */
-            padding-bottom: 40px;
-            margin-bottom: 20px;
-        }
-
-        .footer-col h2 {
-            color: white;
-            font-size: 1rem;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            /* IL TRUCCO DELL'ANGOLO BLU */
-            border-bottom: none;
-            border-top: 3px solid #3b71b9;
-            border-left: 3px solid #3b71b9;
-            padding-top: 10px;
-            padding-left: 15px;
-            display: inline-block;
-        }
-
-        .footer-col ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-col ul li a {
-            color: #f4f4f4; /* Bianco più luminoso come l'originale */
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Nuova classe per i social */
-        .footer-socials {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .footer-socials a {
-            color: white;
-            text-decoration: none;
-            margin: 0 12px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #ffffff;
-        }
-
-        /* === STILE HERO ARTICLE SCURO === */
-        .dark-hero {
+        /* dark hero article */
+        .hero-dark {
             display: flex;
             flex-direction: column;
             background-color: #262626;
             margin-bottom: 30px;
-        }
-
-        .image-wrapper {
-            position: relative; /* Serve per ancorare l'etichetta */
-            width: 100%;
-            line-height: 0;
         }
 
         .overlay-badge {
@@ -302,17 +291,17 @@
             transform: translate(-50%, 50%);
             background-color: #3b71b9;
             color: white;
-            padding: 8px 30px; /* Più spazio interno */
+            padding: 8px 30px;
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            font-size: 2.8rem; /* Font molto più grande! */
+            font-size: 2.8rem;
             text-transform: uppercase;
             letter-spacing: -1px;
             white-space: nowrap;
         }
 
         .dark-text-content {
-            padding: 50px 30px 40px; /* Molto spazio sopra per via dell'etichetta */
+            padding: 50px 30px 40px;
             text-align: center;
             color: white;
         }
@@ -321,152 +310,212 @@
             font-size: 2.4rem;
             line-height: 1.1;
             margin-top: 10px;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
-        .cat-blue { color: #004a99; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 3px; font-family: 'Poppins', sans-serif;}
-        .date-grey { color: #595959; font-size: 0.75rem; font-weight: bold;}
+        .dark-text-content h1:hover { color: #3b71b9; }
 
-        /* === WIDGET RISULTATI LIVE === */
+        /* colors x contrasto wave */
+        .cat-blue { color: #0056b3 !important; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 3px; font-family: 'Poppins', sans-serif;}
+        .date-grey { color: #575757 !important; font-size: 0.75rem; font-weight: bold;}
+
+        /* overide per il box nero altrimenti da errore */
+        .dark-text-content .cat-blue { color: #90caf9 !important; }
+        .dark-text-content .date-grey { color: #ffffff !important; }
+
+        /* ads */
+        .ad-banner {
+            text-align: center;
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .ad-banner.mid {
+            margin: 20px 0 40px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .ad-banner.bot {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: #575757;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .ad-sidebar {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #eee;
+        }
+
+        /* widget dei risultati */
         .live-widget {
             background-color: white;
             padding: 10px 0 20px 0;
             margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
         }
 
         .live-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-family: 'Poppins', sans-serif;}
-
         .live-text { color: #cc0000; font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 5px;}
-
-        /* Etichetta attiva (Rossa) */
         .live-tag-active { border: 1px solid #cc0000; color: #cc0000; padding: 2px 8px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;}
 
-        /* Etichetta inattiva (Grigia) */
-        .live-tag { border: 1px solid #ccc; color: #333; padding: 2px 8px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;}
-
         .live-matches-grid { display: flex; gap: 15px; overflow-x: auto; }
-
-        /* Le card dei risultati, larghezza fissa per farle piccole */
         .score-box { background-color: #f8f8f8; display: flex; flex-direction: column; width: 230px; padding: 12px; }
-
         .score-row-container { display: flex; justify-content: space-between; }
-
         .teams-col { display: flex; flex-direction: column; justify-content: space-around; gap: 10px;}
-
         .team-item { font-size: 0.85rem; font-weight: bold; color: #333; display: flex; align-items: center; gap: 8px;}
-
         .scores-col { background-color: #595959; display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 35px; padding: 8px 0;}
         .scores-col span { color: white; font-weight: bold; font-size: 1rem; }
+        .score-date { text-align: right; font-size: 0.8rem; color: #575757; margin-top: 10px;}
 
-        .score-date { text-align: right; font-size: 0.8rem; color: #595959; margin-top: 10px;}
-
-        /* === NUOVE CLASSI CASCATA E BADGE === */
+        /* sezioni articoli a griglia */
         .section-title-blue {
             font-size: 0.9rem;
             text-transform: uppercase;
             font-weight: bold;
             color: #333;
-            border-left: 4px solid #3b71b9; /* La famosa lineetta blu */
+            border-left: 4px solid #3b71b9;
             padding-left: 8px;
             margin-bottom: 15px;
             font-family: 'Poppins', sans-serif;
             border-bottom: 1px solid #eee;
             padding-bottom: 5px;
             display: block;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
-        /* Regole della Griglia 1-2-3 per schermi grandi */
-        .cascata-1 { margin-bottom: 30px; }
-        .cascata-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
-        .cascata-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-bottom: 1px solid #eee; padding-bottom: 30px;}
+        .section-title-blue:hover { color: #3b71b9; }
 
-        /* Etichette colorate che si sovrappongono alle foto */
-        .badge-red { position: absolute; bottom: 0; left: 0; background-color: #cc0000; color: white; padding: 4px 10px; font-size: 0.8rem; font-weight: bold; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
-        .badge-black { position: absolute; bottom: 0; left: 0; background-color: #1a1a1a; color: white; padding: 4px 10px; font-size: 0.8rem; font-weight: bold; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
+        .feat-main { margin-bottom: 30px; }
+        .feat-sub { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-bottom: 1px solid #eee; padding-bottom: 30px;}
 
-        /* 1. Ancora le etichette alle immagini in modo corretto */
-        .image-wrapper {
-            position: relative; /* Questo impedisce alle etichette di "volare via" */
-            width: 100%;
-            display: block;
+        .badge-red, .badge-black {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+        }
+        .badge-red { background-color: #d32f2f !important; color: white !important; }
+        .badge-black { background-color: #1a1a1a; color: white; }
+
+        .feat-main h1 { font-size: 2rem; line-height: 1.1; margin-top: 5px; font-family: 'Poppins', sans-serif; }
+        .feat-sub h2 { font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif; }
+        .feat-grid h2 { font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif; }
+        .feat-grid .badge-black { font-size: 0.75rem; padding: 2px 6px; }
+
+        article h1, article h2, article h3, .side-article p { cursor: pointer; transition: 0.2s; }
+        article h1:hover, article h2:hover, article h3:hover, .side-article p:hover { color: #3b71b9; }
+
+        /* modulo iniziative speciale */
+        .initiative-box {
+            display: flex; gap: 30px; align-items: center; margin-top: 15px;
+        }
+        .init-img { flex: 1.2; }
+        .init-text { flex: 1; }
+        .label-brown {
+            background-color: #8b4513; color: white; padding: 4px 10px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; font-family: 'Poppins', sans-serif;
+        }
+        .init-text h2 { font-size: 1.8rem; line-height: 1.2; margin-top: 5px; font-family: 'Poppins', sans-serif; }
+
+        /* footer */
+        .site-footer {
+            background-color: #262626;
+            color: #ccc;
+            padding: 50px 20px 30px 20px;
+            margin-top: 50px;
+            font-family: 'Poppins', sans-serif;
         }
 
-        /* 2. Impedisce alla Sidebar di "stirarsi" creando buchi bianchi */
-        .sidebar {
+        .footer-logo {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #d32f2f !important;
+            background: none !important;
+        }
+
+        .footer-grid {
             display: flex;
-            flex-direction: column;
-            gap: 30px; /* Spazio fisso tra i banner */
-            align-self: start; /* IL TRUCCO: la fa rimanere compatta in alto! */
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+            padding-bottom: 40px;
+            margin-bottom: 20px;
         }
 
-        /* 3. Proporzioni perfette per le colonne (Più spazio alle notizie, meno ai banner) */
-        .hero-section {
-            display: grid;
-            grid-template-columns: 2.8fr 1fr; /* Rende la sidebar di destra più stretta come l'originale */
-            gap: 30px;
-            margin-bottom: 30px;
+        .footer-col {
+            min-width: 130px;
         }
 
-        /* === EFFETTO HOVER E MANINA (Main + Sidebar) === */
-        article h1, article h2, article h3, .dark-text-content h1,
-        .sidebar p, .side-article p, .section-title-blue {
-            cursor: pointer; /* Fa apparire la manina */
-            transition: color 0.2s ease-in-out;
+        .footer-col h2 {
+            color: white;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-top: 3px solid #3b71b9;
+            border-left: 3px solid #3b71b9;
+            padding-top: 10px;
+            padding-left: 15px;
+            display: inline-block;
         }
 
-        /* Effetto al passaggio del mouse: tutto diventa blu chiaro */
-        article h1:hover, article h2:hover, article h3:hover, .dark-text-content h1:hover,
-        .sidebar p:hover, .side-article p:hover, .section-title-blue:hover {
-            color: #3b71b9;
-        }
-        /* === EFFETTO HOVER PER MENU, BOTTONI E FOOTER === */
-        .nav-menu a, .footer-col a, .footer-socials a {
-            transition: color 0.2s ease-in-out;
-            cursor: pointer; /* Fa apparire la manina */
-        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: #f4f4f4; text-decoration: none; font-size: 0.85rem; transition: 0.2s;}
+        .footer-col ul li a:hover { color: #3b71b9 !important; }
 
-        /* Il testo del menu e del footer diventa blu chiaro al passaggio del mouse */
-        .nav-menu a:hover, .footer-col a:hover, .footer-socials a:hover {
-            color: #3b71b9 !important;
-        }
+        .footer-socials { text-align: center; margin: 30px 0; }
+        .footer-socials a { color: white; text-decoration: none; margin: 0 12px; font-size: 0.9rem; font-weight: 600; transition: 0.2s;}
+        .footer-socials a:hover { color: #3b71b9 !important; }
 
-        /* Effetto per i bottoni: diventano blu chiaro quando ci passi sopra */
-        .btn-green, button {
-            transition: background-color 0.2s ease-in-out;
-            cursor: pointer; /* Fa apparire la manina sui pulsanti */
-        }
+        .footer-bottom { text-align: center; font-size: 0.75rem; color: #ffffff; }
 
-        .btn-green:hover, button:hover {
-            background-color: #3b71b9 !important;
-            border-color: #3b71b9 !important;
-            color: white !important;
-        }
-        /* === EFFETTO HOVER E MANINA PER BURGER MENU === */
-        .burger-icon {
-            cursor: pointer; /* Fa apparire la manina */
-            transition: opacity 0.2s ease-in-out;
-        }
-
-        .burger-icon:hover {
-            opacity: 0.7; /* Schiarisce leggermente l'icona al passaggio del mouse */
-        }
-
-        .burger-lines span {
-            transition: background-color 0.2s ease-in-out;
-        }
-
-        /* Cambia il colore delle linee in blu quando passi il mouse sopra l'icona */
-        .burger-icon:hover .burger-lines span {
-            background-color: #3b71b9;
-        }
-
-        /* === MEDIA QUERIES === */
+        /* regole per cellulare */
         @media (max-width: 768px) {
+            body { display: flex; flex-direction: column; }
 
-            /* 1. HEADER E NAVIGAZIONE (Riduciamo i margini laterali) */
-            .header-container, .nav-container, main { padding: 0 10px !important; }
-            .header-date, .header-actions, .nav-right { display: none !important; }
+            .site-header, .main-nav, .container, .site-footer {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+            }
 
-            /* MENU ORIZZONTALE SCORREVOLE (Manteniamo il tuo codice) */
+            .site-header { order: 1; padding: 10px 0; border-bottom: none; }
+            .main-nav { order: 2; }
+            .container { order: 3; }
+            .site-footer { order: 4; }
+
+            .header-container, .nav-container { padding: 0 15px !important; }
+            main, .site-footer { padding-left: 15px !important; padding-right: 15px !important; }
+
+            .desktop-date, .desktop-btn { display: none !important; }
+            .mobile-burger { display: block !important; }
+            .logo { font-size: 1.8rem !important; }
+
+            .burger-icon, .nav-right { display: none !important; }
+
             ul.nav-menu {
                 display: flex !important;
                 flex-direction: row !important;
@@ -478,51 +527,42 @@
                 background-color: #1a1a1a;
                 gap: 20px;
                 scrollbar-width: thin;
-                scrollbar-color: #cc0000 #333;
+                scrollbar-color: #d32f2f #333;
             }
             ul.nav-menu::-webkit-scrollbar { height: 4px; }
             ul.nav-menu::-webkit-scrollbar-track { background: #333; }
-            ul.nav-menu::-webkit-scrollbar-thumb { background: #cc0000; border-radius: 10px; }
+            ul.nav-menu::-webkit-scrollbar-thumb { background: #d32f2f; border-radius: 10px; }
             ul.nav-menu li { display: inline-block; }
-            .burger-icon { display: none !important; }
 
-            /* 2. PROPORZIONI NOTIZIA PRINCIPALE */
-            .dark-hero h1 { font-size: 1.5rem !important; }
+            .hero-dark h1 { font-size: 1.5rem !important; }
             .overlay-badge { font-size: 1.2rem; padding: 5px 15px; }
 
-            /* 3. SOLUZIONE PER LA BARRA LIVE (Da affiancate a impilate) */
-            .live-matches-grid {
-                display: flex !important; /* Sostituisce la griglia */
-                flex-direction: column !important; /* Mette le partite una sotto l'altra */
-                gap: 15px !important;
-            }
-
-            /* 4. GRIGLIE NOTIZIE E SIDEBAR */
+            .live-matches-grid { display: flex !important; flex-direction: column !important; gap: 15px !important; }
             .hero-section { display: flex; flex-direction: column; }
-            .hero-section > div { grid-template-columns: 1fr !important; }
 
-            /* 5. SEZIONE CALCIO (Da 4 colonne a 2 colonne su telefono) */
-            section[style*="grid-template-columns: repeat(4"] {
-                grid-template-columns: 1fr 1fr !important;
-            }
+            .feat-sub { grid-template-columns: 1fr !important; }
+            .feat-grid { grid-template-columns: 1fr 1fr !important; }
 
-            /* 6. MEGA FOOTER (Da 6 colonne orizzontali a griglia 2x3) */
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            /* footer a singola colonna per telefono */
+            .footer-grid { flex-direction: column; }
+            .initiative-box { flex-direction: column; }
         }
     </style>
+</head>
 <body role="document">
 
-<nav class="full-width-nav" role="navigation" aria-label="Menu principale">
-    <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; height: 50px;">
-
-        <div style="flex: 1; display: flex; align-items: center;">
+<nav class="main-nav" role="navigation" aria-label="Menu principale">
+    <div class="nav-container">
+        <div class="nav-left">
             <input type="checkbox" id="menu-toggle" class="menu-checkbox">
             <label for="menu-toggle" class="burger-icon" aria-label="Apri menu di navigazione">
-                <div class="burger-lines"><span></span><span></span><span></span></div>
+                <div class="b-lines">
+                    <span class="b-line"></span><span class="b-line"></span><span class="b-line"></span>
+                </div>
             </label>
         </div>
 
-        <ul class="nav-menu" style="display: flex; justify-content: center; margin: 0; padding: 0;">
+        <ul class="nav-menu">
             <li><a href="#">Lorem Ipsum</a></li>
             <li><a href="#">Dolor Sit</a></li>
             <li><a href="#">Consectetur</a></li>
@@ -533,51 +573,50 @@
             <li><a href="#">Incididunt</a></li>
         </ul>
 
-        <div class="nav-right" style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
-            <span class="btn-green" style="background-color: #2e7d32; color: white; padding: 6px 12px; border-radius: 3px; display: inline-flex; align-items: center; text-transform: uppercase; cursor: pointer;">LOREM PLUS</span>
-            <span class="btn-live" style="color: #ff4444; display: flex; align-items: center; gap: 5px; text-transform: uppercase; cursor: pointer;">
-                <span style="font-size: 1.4rem; line-height: 0; margin-top: -2px;">&bull;</span> LIVE
+        <div class="nav-right">
+            <span class="btn-green">LOREM PLUS</span>
+            <span class="btn-live">
+                <span class="dot">&bull;</span> LIVE
             </span>
         </div>
-
     </div>
 </nav>
 
-<header class="full-width-header" role="banner">
-    <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
-
-        <div class="header-date" style="flex: 1; color: #595959; font-size: 0.8rem; font-family: 'Poppins', sans-serif;">LOREM IPSUM, 16 APRIL 2026</div>
-
-        <div class="logo" style="text-align: center;">
-            <span style="color: var(--primary-color); font-size: 2.8rem; font-weight: bold; font-family: 'Poppins', sans-serif; text-transform: uppercase; cursor: pointer;">NEWSLAYOUT</span>
+<header class="site-header" role="banner">
+    <div class="header-container">
+        <div class="header-left">
+            <div class="desktop-date">LOREM IPSUM, 16 APRIL 2026</div>
+            <label class="mobile-burger" aria-label="Apri menu">
+                <div class="b-lines">
+                    <span class="b-line"></span><span class="b-line"></span><span class="b-line"></span>
+                </div>
+            </label>
         </div>
 
-        <div class="header-actions" style="flex: 1; display: flex; gap: 15px; align-items: center; justify-content: flex-end;">
-            <button aria-label="Sottoscrivi abbonamento" style="background-color: #2e7d32; color: white; border: none; padding: 8px 15px; font-weight: bold; cursor: pointer; border-radius: 4px; font-family: 'Poppins', sans-serif;">SUBSCRIBE</button>
-            <button aria-label="Leggi edizione digitale" style="background-color: white; color: #333; border: 1px solid #333; padding: 8px 15px; font-weight: bold; cursor: pointer; border-radius: 4px; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 8px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        <div class="logo">NEWSLAYOUT</div>
+
+        <div class="header-actions">
+            <button class="desktop-btn" aria-label="Sottoscrivi abbonamento">SUBSCRIBE</button>
+            <button class="desktop-btn btn-outline" aria-label="Leggi edizione digitale">
                 READ NEWSPAPER
             </button>
-            <a href="#" aria-label="Profilo utente" style="color: #333; display: flex; align-items: center;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <a href="#" class="user-icon" aria-label="Profilo utente">
+                LOGIN
             </a>
         </div>
-
     </div>
 </header>
 
 <div class="container">
-
-    <div class="top-banner" style="text-align: center; margin-bottom: 20px; background-color: white; padding: 10px;">
-        <p style="font-size: 0.8rem; color: #595959; text-transform: uppercase; margin-bottom: 5px;">Advertisement</p>
+    <div class="ad-banner">
+        <p class="ad-label">Advertisement</p>
         <img src="https://placehold.co/970x90?text=Top+Banner+Placeholder" alt="Advertisement Banner" style="max-width: 100%; height: auto;">
     </div>
 
-    <main role="main" style="background-color: white; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-
-        <article class="dark-hero" style="margin-bottom: 0;">
+    <main role="main">
+        <article class="hero-dark">
             <div class="image-wrapper">
-                <img src="https://placehold.co/1200x500?text=Main+Hero+Image" alt="Immagine descrittiva per l'articolo in primo piano della categoria news" style="width: 100%;">
+                <img src="https://placehold.co/1200x500?text=Main+Hero+Image" alt="Immagine descrittiva per l'articolo in primo piano della categoria news">
                 <span class="overlay-badge">LOREM IPSUM</span>
             </div>
             <div class="dark-text-content">
@@ -589,19 +628,18 @@
             </div>
         </article>
 
-        <div class="live-widget" style="border-bottom: 1px solid #eee; margin-bottom: 30px;">
+        <div class="live-widget">
             <div class="live-header">
-                <span class="live-text"><span style="font-size: 1.5rem; line-height: 0;">&bull;</span> LIVE</span>
-                <span class="live-tag-active">Category A</span>
-                <span class="live-tag">Category B</span>
+                <span class="live-text"><span class="dot">&bull;</span> LIVE</span>
+                <span class="live-tag-active">MATCHES</span>
             </div>
 
             <div class="live-matches-grid">
                 <div class="score-box" aria-label="Match score">
                     <div class="score-row-container">
                         <div class="teams-col">
-                            <div class="team-item">⚽ Team Alpha</div>
-                            <div class="team-item">⚽ Team Beta</div>
+                            <div class="team-item">⚽ Team A</div>
+                            <div class="team-item">⚽ Team B</div>
                         </div>
                         <div class="scores-col">
                             <span>0</span><span>0</span>
@@ -613,8 +651,8 @@
                 <div class="score-box" aria-label="Match score">
                     <div class="score-row-container">
                         <div class="teams-col">
-                            <div class="team-item">⚽ Team Gamma</div>
-                            <div class="team-item">⚽ Team Delta</div>
+                            <div class="team-item">⚽ Team C</div>
+                            <div class="team-item">⚽ Team D</div>
                         </div>
                         <div class="scores-col">
                             <span>0</span><span>0</span>
@@ -629,162 +667,161 @@
             <div class="cascata-container">
                 <span class="section-title-blue">LOREM SECTION</span>
 
-                <article class="cascata-1">
+                <article class="feat-main">
                     <div class="image-wrapper">
-                        <img src="https://placehold.co/800x450?text=Cascata+1+Image" alt="Large news placeholder" style="width: 100%;">
+                        <img src="https://placehold.co/800x450?text=Cascata+1+Image" alt="Large news placeholder">
                         <span class="badge-red">TOPIC 1</span>
                     </div>
                     <p class="date-grey" style="margin-top: 10px;">20 April 2026, 10:49</p>
-                    <h1 style="font-size: 2rem; line-height: 1.1; margin-top: 5px; font-family: 'Poppins', sans-serif;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore...</h1>
+                    <h1>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore...</h1>
                 </article>
 
-                <div class="cascata-2">
+                <div class="feat-sub">
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 1" style="width: 100%;">
+                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 1">
                             <span class="badge-black">TOPIC 2</span>
                         </div>
                         <p class="date-grey" style="margin-top: 10px;">20 April 2026, 10:21</p>
-                        <h2 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Excepteur sint occaecat cupidatat non proident sunt in culpa qui...</h2>
+                        <h2>Excepteur sint occaecat cupidatat non proident sunt in culpa qui...</h2>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 2" style="width: 100%;">
+                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 2">
                             <span class="badge-black">TOPIC 3</span>
                         </div>
                         <p class="date-grey" style="margin-top: 10px;">19 April 2026, 20:59</p>
-                        <h2 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</h2>
+                        <h2>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</h2>
                     </article>
                 </div>
 
-                <div class="cascata-3">
+                <div class="feat-grid">
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 4" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.75rem; padding: 2px 6px;">INFO</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 4">
+                            <span class="badge-black">INFO</span>
                         </div>
-                        <h2 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Sed ut perspiciatis unde omnis iste...</h2>
+                        <h2>Sed ut perspiciatis unde omnis iste...</h2>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 5" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.75rem; padding: 2px 6px;">INFO</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 5">
+                            <span class="badge-black">INFO</span>
                         </div>
-                        <h2 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Nemo enim ipsam voluptatem quia...</h2>
+                        <h2>Nemo enim ipsam voluptatem quia...</h2>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 6" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.75rem; padding: 2px 6px;">INFO</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 6">
+                            <span class="badge-black">INFO</span>
                         </div>
-                        <h2 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Neque porro quisquam est qui...</h2>
+                        <h2>Neque porro quisquam est qui...</h2>
                     </article>
                 </div>
             </div>
 
             <aside class="sidebar">
                 <span class="section-title-blue">SIDEBAR SECTION</span>
-                <article class="side-article" style="background: none; padding: 0;">
-                    <img src="https://placehold.co/400x250?text=Video+Placeholder" alt="Side video content placeholder" style="width: 100%;">
-                    <p style="font-weight: bold; font-size: 0.95rem; margin-top: 10px; margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Quis autem vel eum iure reprehenderit qui in ea voluptate...</p>
+                <article class="side-article">
+                    <img src="https://placehold.co/400x250?text=Video+Placeholder" alt="Side video content placeholder">
+                    <p>Quis autem vel eum iure reprehenderit qui in ea voluptate...</p>
 
-                    <div style="text-align: center; background-color: #f9f9f9; padding: 15px; border: 1px solid #eee;">
-                        <p style="font-size: 0.8rem; color: #595959;">Advertisement</p>
-                        <img src="https://placehold.co/300x400?text=Side+Banner+Placeholder" alt="Vertical advertisement" style="width: 100%;">
+                    <div class="ad-sidebar">
+                        <p class="ad-label">Advertisement</p>
+                        <img src="https://placehold.co/300x400?text=Side+Banner+Placeholder" alt="Vertical advertisement" style="max-width: 100%;">
                     </div>
                 </article>
             </aside>
         </section>
 
-        <div style="text-align: center; margin: 20px 0 40px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 20px 0;">
-            <p style="font-size: 0.8rem; color: #595959; text-transform: uppercase; margin-bottom: 5px;">Advertisement</p>
-            <img src="https://placehold.co/970x150?text=Mid+Banner+Placeholder" alt="Horizontal advertisement" style="max-width: 100%;">
+        <div class="ad-banner mid">
+            <p class="ad-label">Advertisement</p>
+            <img src="https://placehold.co/970x150?text=Mid+Banner+Placeholder" alt="Horizontal advertisement">
         </div>
 
         <section class="hero-section">
             <div class="cascata-container">
                 <span class="section-title-blue">LOREM SECTION 2</span>
 
-                <article class="cascata-1">
+                <article class="feat-main">
                     <div class="image-wrapper">
-                        <img src="https://placehold.co/800x450?text=Cascata+1+Image" alt="Large news placeholder" style="width: 100%;">
+                        <img src="https://placehold.co/800x450?text=Cascata+1+Image" alt="Large news placeholder">
                         <span class="badge-red">MAIN CATEGORY</span>
                     </div>
                     <p class="date-grey" style="margin-top: 10px;">20 April 2026, 10:58</p>
-                    <h1 style="font-size: 2rem; line-height: 1.1; margin-top: 5px; font-family: 'Poppins', sans-serif;">At vero eos et accusamus et iusto odio dignissimos ducimus qui...</h1>
+                    <h1>At vero eos et accusamus et iusto odio dignissimos ducimus qui...</h1>
                 </article>
 
-                <div class="cascata-2">
+                <div class="feat-sub">
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 3" style="width: 100%;">
+                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 3">
                             <span class="badge-black">SUB CATEGORY</span>
                         </div>
                         <p class="date-grey" style="margin-top: 10px;">19 April 2026, 22:45</p>
-                        <h2 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Et harum quidem rerum facilis est et expedita...</h2>
+                        <h2>Et harum quidem rerum facilis est et expedita...</h2>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 4" style="width: 100%;">
+                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 4">
                             <span class="badge-black">SUB CATEGORY</span>
                         </div>
                         <p class="date-grey" style="margin-top: 10px;">20 April 2026, 20:57</p>
-                        <h2 style="font-size: 1.2rem; line-height: 1.2; font-family: 'Poppins', sans-serif;">Nam libero tempore, cum soluta nobis est eligendi...</h2>
+                        <h2>Nam libero tempore, cum soluta nobis est eligendi...</h2>
                     </article>
                 </div>
 
-                <div class="cascata-3">
+                <div class="feat-grid">
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 1" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.75rem; padding: 2px 6px;">INFO</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 1">
+                            <span class="badge-black">INFO</span>
                         </div>
-                        <h2 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Temporibus autem quibusdam et aut officiis...</h2>
+                        <h2>Temporibus autem quibusdam et aut officiis...</h2>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 2" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.75rem; padding: 2px 6px;">INFO</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 2">
+                            <span class="badge-black">INFO</span>
                         </div>
-                        <h2 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Itaque earum rerum hic tenetur a sapiente delectus...</h2>
+                        <h2>Itaque earum rerum hic tenetur a sapiente delectus...</h2>
                     </article>
                     <article>
                         <div class="image-wrapper">
-                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 3" style="width: 100%;">
-                            <span class="badge-black" style="font-size: 0.75rem; padding: 2px 6px;">INFO</span>
+                            <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 3">
+                            <span class="badge-black">INFO</span>
                         </div>
-                        <h2 style="font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif;">Reiciendis voluptatibus maiores alias consequatur...</h2>
+                        <h2>Reiciendis voluptatibus maiores alias consequatur...</h2>
                     </article>
                 </div>
             </div>
 
             <aside class="sidebar">
-                <div style="margin-bottom: 20px; text-align: center; background: white; padding: 10px; border: 1px solid #eee;">
+                <div class="ad-sidebar" style="margin-bottom: 20px;">
                     <img src="https://placehold.co/300x400?text=Side+Banner+1" alt="Vertical advertisement placeholder 1" style="width: 100%;">
                 </div>
-                <div style="text-align: center;">
+                <div class="ad-sidebar">
                     <img src="https://placehold.co/300x400?text=Side+Banner+2" alt="Vertical advertisement placeholder 2" style="width: 100%;">
                 </div>
             </aside>
         </section>
 
-        <div style="margin-bottom: 30px;">
+        <div>
             <span class="section-title-blue">LOREM INITIATIVE</span>
-
-            <article style="display: flex; gap: 30px; align-items: center; margin-top: 15px;">
-                <div style="flex: 1.2;">
+            <article class="initiative-box">
+                <div class="init-img">
                     <img src="https://placehold.co/600x320?text=Initiative+Featured+Image" alt="Illustrazione rappresentativa per l'iniziativa speciale lorem ipsum" style="width: 100%; display: block;">
                 </div>
-                <div style="flex: 1;">
-                    <span style="background-color: #8b4513; color: white; padding: 4px 10px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; font-family: 'Poppins', sans-serif;">LABEL</span>
+                <div class="init-text">
+                    <span class="label-brown">LABEL</span>
                     <p class="date-grey" style="margin-top: 15px; margin-bottom: 5px;">10 April 2026, 11:25</p>
-                    <h2 style="font-size: 1.8rem; line-height: 1.2; margin-top: 5px; font-family: 'Poppins', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</h2>
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</h2>
                 </div>
             </article>
         </div>
 
-        <div style="text-align: center; margin: 40px 0; background-color: #f4f4f4; padding: 20px 0; border: 1px solid #ddd;">
-            <p style="font-size: 0.8rem; color: #595959; text-transform: uppercase; margin-bottom: 5px;">Advertisement</p>
+        <div class="ad-banner bot" style="margin-top: 40px;">
+            <p class="ad-label">Advertisement</p>
             <img src="https://placehold.co/970x150?text=Bottom+Banner+Placeholder" alt="Final advertisement banner" style="max-width: 100%;">
         </div>
 
@@ -793,7 +830,7 @@
 
 <footer class="site-footer" role="contentinfo">
     <div class="footer-container">
-        <div class="footer-logo" style="cursor: pointer;">NEWSLAYOUT</div>
+        <div class="footer-logo">NEWSLAYOUT</div>
 
         <div class="footer-grid">
             <div class="footer-col">
@@ -853,14 +890,14 @@
         </div>
 
         <div class="footer-socials">
-            <a href="#">Social Alpha</a>
-            <a href="#">Social Beta</a>
-            <a href="#">Social Gamma</a>
-            <a href="#">Social Delta</a>
+            <a href="#">Social A</a>
+            <a href="#">Social B</a>
+            <a href="#">Social C</a>
+            <a href="#">Social D</a>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Progettazione e Produzione Multimediale - Student Name</p>
+            <p>&copy; 2026 Progettazione e Produzione Multimediale - Gabriele Fabbri</p>
             <p>This website layout is for educational purposes using placeholder content.</p>
         </div>
     </div>
