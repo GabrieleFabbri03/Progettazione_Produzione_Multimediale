@@ -12,9 +12,8 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
-            max-width: 100%;
         }
+        img { max-width: 100%; }
 
         body, html {
             width: 100%;
@@ -117,7 +116,6 @@
             cursor: pointer;
             border-radius: 4px;
             font-family: 'Poppins', sans-serif;
-            transition: 0.2s;
         }
 
         .btn-outline {
@@ -222,7 +220,6 @@
             align-items: center;
             text-transform: uppercase;
             cursor: pointer;
-            transition: 0.2s;
         }
 
         .btn-green:hover { background-color: #3b71b9; }
@@ -253,13 +250,13 @@
             margin-bottom: 30px;
         }
 
-        .image-wrapper {
+        .boxFoto {
             position: relative;
             width: 100%;
             display: block;
         }
 
-        .image-wrapper img {
+        .boxFoto img {
             width: 100%;
             height: auto;
             display: block;
@@ -279,7 +276,6 @@
             margin: 10px 0 20px 0;
             font-family: 'Poppins', sans-serif;
             cursor: pointer;
-            transition: 0.2s;
         }
 
         /* dark hero article */
@@ -317,7 +313,6 @@
             line-height: 1.1;
             margin-top: 10px;
             cursor: pointer;
-            transition: 0.2s;
         }
 
         .dark-text-content h1:hover { color: #3b71b9; }
@@ -378,7 +373,7 @@
 
         .live-matches-grid { display: flex; gap: 15px; overflow-x: auto; }
         .score-box { background-color: #f8f8f8; display: flex; flex-direction: column; width: 230px; padding: 12px; }
-        .score-row-container { display: flex; justify-content: space-between; }
+        .riga_punteggio { display: flex; justify-content: space-between; }
         .teams-col { display: flex; flex-direction: column; justify-content: space-around; gap: 10px;}
         .team-item { font-size: 0.85rem; font-weight: bold; color: #333; display: flex; align-items: center; gap: 8px;}
         .scores-col { background-color: #595959; display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 35px; padding: 8px 0;}
@@ -399,7 +394,6 @@
             padding-bottom: 5px;
             display: block;
             cursor: pointer;
-            transition: 0.2s;
         }
 
         .section-title-blue:hover { color: #3b71b9; }
@@ -426,7 +420,7 @@
         .feat-grid h2 { font-size: 1rem; line-height: 1.2; margin-top: 10px; font-family: 'Poppins', sans-serif; }
         .feat-grid .badge-black { font-size: 0.75rem; padding: 2px 6px; }
 
-        article h1, article h2, article h3, .side-article p { cursor: pointer; transition: 0.2s; }
+        article h1, article h2, article h3, .side-article p { cursor: pointer; }
         article h1:hover, article h2:hover, article h3:hover, .side-article p:hover { color: #3b71b9; }
 
         /* modulo iniziative speciale */
@@ -489,11 +483,11 @@
 
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: #f4f4f4; text-decoration: none; font-size: 0.85rem; transition: 0.2s;}
+        .footer-col ul li a { color: #f4f4f4; text-decoration: none; font-size: 0.85rem; }
         .footer-col ul li a:hover { color: #3b71b9 !important; }
 
         .footer-socials { text-align: center; margin: 30px 0; }
-        .footer-socials a { color: white; text-decoration: none; margin: 0 12px; font-size: 0.9rem; font-weight: 600; transition: 0.2s;}
+        .footer-socials a { color: white; text-decoration: none; margin: 0 12px; font-size: 0.9rem; font-weight: 600; }
         .footer-socials a:hover { color: #3b71b9 !important; }
 
         .footer-bottom { text-align: center; font-size: 0.75rem; color: #ffffff; }
@@ -556,9 +550,9 @@
     </style>
 </head>
 
-<body role="document">
+<body>
 <!-- Inizio HTML -->
-<nav class="main-nav" role="navigation" aria-label="Menu principale">
+<nav class="main-nav" role="navigation" aria-label="Menu">
     <div class="nav-container">
         <div class="nav-left">
             <input type="checkbox" id="menu-toggle" class="menu-checkbox">
@@ -624,7 +618,7 @@
 
     <main role="main">
         <article class="hero-dark">
-            <div class="image-wrapper">
+            <div class="boxFoto">
                 <img src="https://placehold.co/1200x500?text=Main+Hero+Image" alt="Immagine descrittiva per l'articolo in primo piano della categoria news">
                 <span class="overlay-badge">LOREM IPSUM</span>
             </div>
@@ -645,7 +639,7 @@
 
             <div class="live-matches-grid">
                 <div class="score-box" aria-label="Match score">
-                    <div class="score-row-container">
+                    <div class="riga_punteggio">
                         <div class="teams-col">
                             <div class="team-item">⚽ Team A</div>
                             <div class="team-item">⚽ Team B</div>
@@ -658,7 +652,7 @@
                 </div>
 
                 <div class="score-box" aria-label="Match score">
-                    <div class="score-row-container">
+                    <div class="riga_punteggio">
                         <div class="teams-col">
                             <div class="team-item">⚽ Team C</div>
                             <div class="team-item">⚽ Team D</div>
@@ -677,7 +671,7 @@
                 <span class="section-title-blue">LOREM SECTION</span>
 
                 <article class="feat-main">
-                    <div class="image-wrapper">
+                    <div class="boxFoto">
                         <img src="https://placehold.co/800x450?text=Cascata+1+Image" alt="Large news placeholder">
                         <span class="badge-red">TOPIC 1</span>
                     </div>
@@ -687,7 +681,7 @@
 
                 <div class="feat-sub">
                     <article>
-                        <div class="image-wrapper">
+                        <div class="boxFoto">
                             <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 1">
                             <span class="badge-black">TOPIC 2</span>
                         </div>
@@ -695,7 +689,7 @@
                         <h2>Excepteur sint occaecat cupidatat non proident sunt in culpa qui...</h2>
                     </article>
                     <article>
-                        <div class="image-wrapper">
+                        <div class="boxFoto">
                             <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 2">
                             <span class="badge-black">TOPIC 3</span>
                         </div>
@@ -706,21 +700,21 @@
 
                 <div class="feat-grid">
                     <article>
-                        <div class="image-wrapper">
+                        <div class="boxFoto">
                             <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 4">
                             <span class="badge-black">INFO</span>
                         </div>
                         <h2>Sed ut perspiciatis unde omnis iste...</h2>
                     </article>
                     <article>
-                        <div class="image-wrapper">
+                        <div class="boxFoto">
                             <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 5">
                             <span class="badge-black">INFO</span>
                         </div>
                         <h2>Nemo enim ipsam voluptatem quia...</h2>
                     </article>
                     <article>
-                        <div class="image-wrapper">
+                        <div class="boxFoto">
                             <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 6">
                             <span class="badge-black">INFO</span>
                         </div>
@@ -753,7 +747,7 @@
                 <span class="section-title-blue">LOREM SECTION 2</span>
 
                 <article class="feat-main">
-                    <div class="image-wrapper">
+                    <div class="boxFoto">
                         <img src="https://placehold.co/800x450?text=Cascata+1+Image" alt="Large news placeholder">
                         <span class="badge-red">MAIN CATEGORY</span>
                     </div>
@@ -763,7 +757,7 @@
 
                 <div class="feat-sub">
                     <article>
-                        <div class="image-wrapper">
+                        <div class="boxFoto">
                             <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 3">
                             <span class="badge-black">SUB CATEGORY</span>
                         </div>
@@ -771,7 +765,7 @@
                         <h2>Et harum quidem rerum facilis est et expedita...</h2>
                     </article>
                     <article>
-                        <div class="image-wrapper">
+                        <div class="boxFoto">
                             <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 4">
                             <span class="badge-black">SUB CATEGORY</span>
                         </div>
@@ -782,21 +776,21 @@
 
                 <div class="feat-grid">
                     <article>
-                        <div class="image-wrapper">
+                        <div class="boxFoto">
                             <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 1">
                             <span class="badge-black">INFO</span>
                         </div>
                         <h2>Temporibus autem quibusdam et aut officiis...</h2>
                     </article>
                     <article>
-                        <div class="image-wrapper">
+                        <div class="boxFoto">
                             <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 2">
                             <span class="badge-black">INFO</span>
                         </div>
                         <h2>Itaque earum rerum hic tenetur a sapiente delectus...</h2>
                     </article>
                     <article>
-                        <div class="image-wrapper">
+                        <div class="boxFoto">
                             <img src="https://placehold.co/250x150?text=Small+Image" alt="Small news placeholder 3">
                             <span class="badge-black">INFO</span>
                         </div>
