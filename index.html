@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports News Layout - Assignment</title>
+    <title>Layout News- Progettazione e Produzione Multimediale</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Inizio CSS */
         /* reset & vars */
         * {
             box-sizing: border-box;
@@ -16,8 +17,10 @@
         }
 
         body, html {
-            overflow-x: hidden;
             width: 100%;
+        }
+        body {
+            overflow-x: clip;
         }
 
         :root {
@@ -50,6 +53,9 @@
             width: 100%;
             border-bottom: 1px solid #eee;
             padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .container {
@@ -316,7 +322,7 @@
 
         .dark-text-content h1:hover { color: #3b71b9; }
 
-        /* colors x contrasto wave */
+        /* colori x contrasto wave */
         .cat-blue { color: #0056b3 !important; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 3px; font-family: 'Poppins', sans-serif;}
         .date-grey { color: #575757 !important; font-size: 0.75rem; font-weight: bold;}
 
@@ -324,7 +330,7 @@
         .dark-text-content .cat-blue { color: #90caf9 !important; }
         .dark-text-content .date-grey { color: #ffffff !important; }
 
-        /* ads */
+        /* pubblicità */
         .ad-banner {
             text-align: center;
             background-color: white;
@@ -549,8 +555,9 @@
         }
     </style>
 </head>
-<body role="document">
 
+<body role="document">
+<!-- Inizio HTML -->
 <nav class="main-nav" role="navigation" aria-label="Menu principale">
     <div class="nav-container">
         <div class="nav-left">
@@ -593,7 +600,9 @@
             </label>
         </div>
 
-        <div class="logo">TITLE</div>
+        <div class="logo">
+            <img src="https://placehold.co/250x60?text=Logo+Placeholder" alt="Logo Placeholder" style="height: 45px; width: auto; display: block; margin: 0 auto;">
+        </div>
 
         <div class="header-actions">
             <button class="desktop-btn" aria-label="Sottoscrivi abbonamento">SUBSCRIBE</button>
@@ -830,8 +839,9 @@
 
 <footer class="site-footer" role="contentinfo">
     <div class="footer-container">
-        <div class="footer-logo">TITLE</div>
-
+        <div class="footer-logo">
+            <img src="https://placehold.co/250x60/333333/cccccc?text=Logo+Footer" alt="Footer Logo Placeholder" style="display: inline-block;">
+        </div>
         <div class="footer-grid">
             <div class="footer-col">
                 <h2>Category 1</h2>
@@ -897,7 +907,7 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Progettazione e Produzione Multimediale - Gabriele Fabbri</p>
+            <p>copyright 2026 Progettazione e Produzione Multimediale - Gabriele Fabbri</p>
             <p>This website layout is for educational purposes using placeholder content.</p>
         </div>
     </div>
