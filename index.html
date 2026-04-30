@@ -58,9 +58,11 @@
         }
 
         .container {
-            max-width: 1024px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 15px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
         }
 
         .nav-container, .header-container {
@@ -238,9 +240,8 @@
         /* main content grid */
         main {
             background-color: white;
-            padding: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            margin: 20px 0;
+            padding: 20px 0;
+            margin: 0;
         }
 
         .hero-section {
@@ -328,9 +329,8 @@
         /* pubblicità */
         .ad-banner {
             text-align: center;
-            background-color: white;
-            padding: 10px;
-            margin-bottom: 20px;
+            padding: 20px 10px;
+            margin-bottom: 0;
         }
 
         .ad-banner.mid {
@@ -341,8 +341,9 @@
         }
 
         .ad-banner.bot {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
+            border: none;
+            border-top: 1px solid #eee;
+            padding: 20px 0;
         }
 
         .ad-label {
@@ -667,6 +668,11 @@
             </div>
         </div>
 
+        <div class="ad-banner mid">
+            <p class="ad-label">Advertisement</p>
+            <img src="https://placehold.co/970x150?text=Mid+Banner+Placeholder" alt="Horizontal advertisement">
+        </div>
+
         <section class="hero-section">
             <div class="cascata-container">
                 <span class="section-title-blue">LOREM SECTION</span>
@@ -823,6 +829,53 @@
                 </div>
             </article>
         </div>
+
+        <div class="ad-banner mid">
+            <p class="ad-label">Advertisement</p>
+            <img src="https://placehold.co/970x150?text=Mid+Banner+Placeholder" alt="Horizontal advertisement">
+        </div>
+
+        <section class="hero-section">
+            <div class="cascata-container">
+                <span class="section-title-blue">LOREM SECTION 3</span>
+
+                <article class="feat-main">
+                    <div class="boxFoto">
+                        <img src="https://placehold.co/800x450?text=Cascata+1+Image" alt="Large news placeholder">
+                        <span class="badge-red">MAIN CATEGORY</span>
+                    </div>
+                    <p class="date-grey" style="margin-top: 10px;">28 April 2026, 20:44</p>
+                    <h1>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore...</h1>
+                </article>
+
+                <div class="feat-sub">
+                    <article>
+                        <div class="boxFoto">
+                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 1">
+                            <span class="badge-black">SUB CATEGORY</span>
+                        </div>
+                        <p class="date-grey" style="margin-top: 10px;">24 April 2026, 10:41</p>
+                        <h2>Excepteur sint occaecat cupidatat non proident sunt in culpa qui...</h2>
+                    </article>
+                    <article>
+                        <div class="boxFoto">
+                            <img src="https://placehold.co/400x250?text=Cascata+2+Image" alt="Medium news placeholder 2">
+                            <span class="badge-black">SUB CATEGORY</span>
+                        </div>
+                        <p class="date-grey" style="margin-top: 10px;">22 April 2026, 11:59</p>
+                        <h2>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</h2>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Sidebar con pubblicità verticale -->
+            <aside class="sidebar">
+                <div class="ad-sidebar" style="height: 100%; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 35px;">
+                    <p class="ad-label">Advertisement</p>
+                    <img src="https://placehold.co/300x500?text=Vertical+Banner" alt="Vertical advertisement placeholder" style="width: 100%;">
+                </div>
+            </aside>
+        </section>
 
         <div class="ad-banner bot" style="margin-top: 40px;">
             <p class="ad-label">Advertisement</p>
